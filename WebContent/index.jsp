@@ -33,34 +33,37 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="float-left">
-              <p>Phone: +01 256 25 235</p>
-              <p>email: info@eiser.com</p>
+              <p>Tel : 031-716-2113</p>
+              <p>매장위치찾기</p>
             </div>
           </div>
+          
+          <!-- 우측 최상단, 로그인, 회원가입 -->
           <div class="col-lg-5">
             <div class="float-right">
               <ul class="right_side">
+              
+              
                 <li>
                   <a href="cart.html">
-                    gift card
+                    로그인
                   </a>
                 </li>
                 <li>
                   <a href="tracking.html">
-                    track order
+                    회원가입
                   </a>
                 </li>
-                <li>
-                  <a href="contact.html">
-                    Contact Us
-                  </a>
-                </li>
+
+
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
     <div class="main_menu">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
