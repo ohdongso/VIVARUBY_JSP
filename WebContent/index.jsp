@@ -23,6 +23,7 @@
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
 </head>
 
 <body>
@@ -45,12 +46,12 @@
               
               
                 <li>
-                  <a href="cart.html">
+                  <a href="v_member/login.jsp">
                     로그인
                   </a>
                 </li>
                 <li>
-                  <a href="tracking.html">
+                  <a href="v_member/join.jsp">
                     회원가입
                   </a>
                 </li>
@@ -127,6 +128,23 @@
                     </ul>
                   </li>
                   
+                  
+                 <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">문의사항</a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="tracking.html">1</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="elements.html">2</a>
+                      </li>     <li class="nav-item">
+                        <a class="nav-link" href="elements.html">3</a>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                  
               
               <!-- 메뉴중 서브메뉴가 없이, 1개만 있는 메인메뉴 -->    
               <!--     <li class="nav-item">
@@ -165,11 +183,7 @@
                       <i class="ti-heart" aria-hidden="true"></i>
                     </a>
                   </li>
-                  
-                  
-                  
-                  
-                  
+                       
                 </ul>
               </div>
             </div>
@@ -179,6 +193,11 @@
     </div>
   </header>
   <!--================Header Menu Area =================-->
+
+
+
+
+
 
   <!--================Home Banner Area =================-->
   <section class="home_banner_area mb-40">
@@ -196,6 +215,14 @@
     </div>
   </section>
   <!--================End Home Banner Area =================-->
+
+
+
+
+
+
+
+
 
   <!-- Start feature Area -->
   <section class="feature-area section_gap_bottom_custom">
