@@ -26,7 +26,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key");
 		String methodName = request.getParameter("methodName");
-		
+	
 		try {
 			
 			Class<?> clz = clzMap.get(key);

@@ -26,5 +26,5 @@
 
 		url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="vivaruby"
 
-		password="1234" maxTotal="20" maxIdle="10" maxWaitMillis="-1" initialSize="5" maxActive="10" />
+		password="1234" maxTotal="20" maxIdle="10" maxWaitMillis="-1"/>
 </Context>

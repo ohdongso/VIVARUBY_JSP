@@ -17,7 +17,7 @@ public class HandlerMappingListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce)  {
     	ServletContext application =  sce.getServletContext();
     	String fileName = application.getInitParameter("fileName");
-    	
+
     	Map<String, Controller> map = new HashMap<String, Controller>();
     	Map<String, Class<?>> clzMap = new HashMap<String, Class<?>>();
     	
@@ -30,7 +30,7 @@ public class HandlerMappingListener implements ServletContextListener {
     			Controller controller = (Controller)(className.getDeclaredConstructor().newInstance());
     			
     			System.out.println(key+", "+value+", "+controller);
-    			
+    		
     			map.put(key, controller);
     			clzMap.put(key, className);
     		}
