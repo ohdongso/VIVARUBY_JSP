@@ -24,6 +24,14 @@ public class MemberDTO {
 		this.registDate = registDate;
 	}
 	
+	public MemberDTO(String id, String pw, String addr, String phone, String email) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.addr = addr;
+		this.phone = phone;
+		this.email = email;
+	}
 	public MemberDTO(String id, String pw) {
 		super();
 		this.id = id;
@@ -36,6 +44,10 @@ public class MemberDTO {
 		this.pw = pw;
 		this.name = name;
 	}
+	
+	
+	
+	
 	
 	public String getId() {
 		return id;

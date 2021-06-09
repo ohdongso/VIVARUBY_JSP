@@ -29,7 +29,7 @@
 </head>
 
 <body>
-  <!--================Header Menu Area =================-->
+  <!--================ Header 시작. =================-->
   <header class="header_area">
     <div class="top_menu">
       <div class="container">
@@ -49,11 +49,13 @@
                 <li>          
                   <c:if test="${sessionScope.loginUser==null}">
                   <a href="v_member/login.jsp">
-                    로그인&nbsp;&nbsp;&nbsp;&nbsp; /
+                    로그인
                   </a>
                   </c:if>
                   <c:if test="${sessionScope.loginUser!=null}">
-                  ${loginName}님 환영합니다.&nbsp;&nbsp;&nbsp;&nbsp; /
+                  <a href="#">
+                  ${loginName}님 환영합니다.
+                  </a>
                   </c:if>
                 </li>
                 <li>
@@ -63,7 +65,7 @@
                   </a>
                   </c:if>
                   <c:if test="${sessionScope.loginUser!=null}">
-                  <a href="v_member/join.jsp">
+                  <a href="${path}/front?key=member&methodName=logout">
                     로그아웃
                   </a>
                   </c:if>                   
@@ -174,22 +176,20 @@
                       <i class="ti-search" aria-hidden="true"></i>
                     </a>
                   </li>
-
+			      
                   <li class="nav-item">
                     <a href="#" class="icons">
                       <i class="ti-shopping-cart"></i>
                     </a>
                   </li>
-
-
-				  <!-- 마이페이지 이동 -->
+				  
+				  <!-- 마이페이지 이동, 마이페이지에서 이동 할수 있도록 해야한다. -->
                   <li class="nav-item">
-                    <a href="${path}/v_member/login.jsp" class="icons">
+                    <a href="${path}/front?key=member&methodName=myInform" class="icons">
                       <i class="ti-user" aria-hidden="true"></i>
                     </a>
                   </li>
-					
-					
+							
                   <li class="nav-item">
                     <a href="#" class="icons">
                       <i class="ti-heart" aria-hidden="true"></i>
@@ -204,7 +204,7 @@
       </div>
     </div>
   </header>
-  <!--================Header Menu Area =================-->
+  <!--================ 헤더 끝. =================-->
 
 
 
@@ -245,7 +245,7 @@
             <a href="#" class="title">
               <i class="flaticon-money"></i>
               <h3>Money back gurantee</h3>
-            </a>
+              </a>
             <p>Shall open divide a one</p>
           </div>
         </div>

@@ -15,6 +15,18 @@ public interface MemberService {
 	 */
 	MemberDTO loginCheck(MemberDTO memberDTO)throws SQLException;
 	
+	/**
+	 * 아이디에 해당하는 레코드 검색
+	 */
+	MemberDTO myInform(String id, boolean flag)throws SQLException;
 	
+	/**
+	 * 회원정보수정
+	 */
+	void updateMemberInfo(MemberDTO memberdto)throws SQLException;
 	
+	/**
+	 * 회원탈퇴
+	 */
+	void deleteMember(String id, String pw)throws SQLException;
 }
