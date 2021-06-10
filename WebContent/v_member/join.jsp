@@ -67,7 +67,7 @@
 		<form action="${path}/front?key=member&methodName=memberJoin" method=post>
 			아이디 : <input type="text" name="id" id="id"> <span id="idCheck"></span> <p>
 		    비밀번호 : <input type="password" name="pw" id="pw"> <p>
-		    비밀번호확인 : <input type="password" name="pwc" id="pwc"> <span id="pwCheck"></span> <p> 
+		    비밀번호확인 : <input type="password" name="pwc" id="pwc"> <span id="pwCheck"></span><p> 
 		    이름 : <input type="text" name="name"> <p>
 		    집주소 : <input type="text" name="addr1"> <p>
 		    싱세주소 : <input type="text" name="addr2"> <p>

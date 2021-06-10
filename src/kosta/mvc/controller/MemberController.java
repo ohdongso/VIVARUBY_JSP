@@ -131,6 +131,8 @@ public class MemberController implements Controller {
 		return mv;
 	}
 	
+////////////////////////////////////////////////// 관리자.
+	
 	
 	
 	

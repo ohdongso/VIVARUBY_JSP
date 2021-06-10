@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,11 @@
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+ 
+<script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
 
+</script>
 </head>
 
 <body>
@@ -40,7 +45,7 @@
               <p>매장위치찾기</p>
             </div>
           </div>
-          
+
           <!-- 우측 최상단, 로그인, 회원가입 -->
           <div class="col-lg-5">
             <div class="float-right">
@@ -94,39 +99,35 @@
           </button>
           
           
-          
    		  <!-- 메인메뉴 시작부분 -->
           <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
             <div class="row w-100 mr-0">
               <div class="col-lg-7 pr-0">
                 <ul class="nav navbar-nav center_nav pull-right">
                   
-                  
-           	      <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">여성향수</a>
+                  <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false" >향수</a>
+                      <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="tracking.html">여성향수</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="elements.html">남성향수</a>
+                      </li>     
+                      <li class="nav-item">
+                        <a class="nav-link" href="elements.html">남녀공용</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="elements.html">향수공병</a>
+                      </li>
+                    </ul>
                   </li>
-  				 
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">남성향수</a>
-                  </li>
-                  
-                  
-				  <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">남녀공용</a>
-                  </li>
-                  
-                  
+                                          
        			  <li class="nav-item">
                     <a class="nav-link" href="T_contact.html">선물세트</a>
                   </li>
-                  
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">향수공병</a>
-                  </li>
-                  
-                  
+                                          
                   <li class="nav-item submenu dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                       aria-expanded="false">스킨케어</a>
@@ -158,14 +159,22 @@
                     </ul>
                   </li>
                   
+                   <li class="nav-item submenu dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                      aria-expanded="false">기타</a>
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="nav-link" href="tracking.html">1</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="elements.html">2</a>
+                      </li>     <li class="nav-item">
+                        <a class="nav-link" href="elements.html">3</a>
+                      </li>
+                    </ul>
+                  </li>
                   
-              
-              <!-- 메뉴중 서브메뉴가 없이, 1개만 있는 메인메뉴 -->    
-              <!--     <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">향수공병</a>
-                  </li> -->
-
-
+                  
                 </ul>
               </div>
 
@@ -212,7 +221,7 @@
 
 
   <!--================Home Banner Area =================-->
-  <section class="home_banner_area mb-40">
+   <section class="home_banner_area mb-40">
     <div class="banner_inner d-flex align-items-center">
       <div class="container">
         <div class="banner_content row">
@@ -290,45 +299,58 @@
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h2><span>Featured product</span></h2>
+            <h1><span>BEST 상품</span></h1>
             <p>Bring called seed first of third give itself now ment</p>
           </div>
         </div>
       </div>
-
+	  
+	  <!-- 최상단 이미지 시작, 베스트 상품 -->
       <div class="row">
+      
+      <c:forEach items="${productAllList}" var="productDTO" varStatus="state">      
+       <!-- 베스트 상품1 -->
         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/feature-product/f-p-1.jpg" alt="" />
+              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
-                <a href="#">
+              
+               <!-- 상세보기 -->
+               <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-eye"></i>
                 </a>
+                
+                <!-- 찜하기 -->
                 <a href="#">
                   <i class="ti-heart"></i>
                 </a>
+                
+                <!-- 장바구니 담기 -->
                 <a href="#">
                   <i class="ti-shopping-cart"></i>
                 </a>
+                
               </div>
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
+                <h4>${productDTO.productName}</h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" /></span>
+                <del><fmt:formatNumber value="${productDTO.productPrice}" /></del>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-4 col-md-6">
+		</c:forEach>
+		
+		<!-- 베스트 상품2 -->
+<%--         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/feature-product/f-p-2.jpg" alt="" />
+              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/b.jpg" alt="" />
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -349,14 +371,15 @@
                 <span class="mr-4">$25.00</span>
                 <del>$35.00</del>
               </div>
-            </div>
+            </div>       
           </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
+        </div> --%>
+		
+		<!-- 베스트 상품3 -->
+<%--         <div class="col-lg-4 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/feature-product/f-p-3.jpg" alt="" />
+              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/c.jpg" alt="" />
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -379,7 +402,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --%>
+        
+        
+        
+        
       </div>
     </div>
   </section>
