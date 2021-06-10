@@ -26,10 +26,48 @@
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
- 
+<style type="text/css">
+
+    #slide{
+      position:relative;
+      width: 100%;
+	  height: 100%;
+    }
+
+    #slide li{
+      position:relative;
+      top:0;
+      left:0;
+      display:none;
+      -webkit-display:block;
+    }
+	
+	#slide img{ 
+     width:100%; 
+     height: 100%; 
+    }  
+	
+
+</style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+imgslide(); //페이지가 로딩될때 함수를 실행합니다
 
+function imgslide(){
+    $val = $("#slide").attr("val"); //현재 이미지 번호를 가져옵니다
+    $mx = $("#slide").attr("mx"); //총 이미지 개수를 가져옵니다
+    
+    $("#img" + $val).hide(); //현재 이미지를 사라지게 합니다.
+	
+	if( $val == $mx ){ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
+	else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
+	$("#img"+$val).fadeIn(500); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
+	
+	$("#slide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
+	setTimeout('imgslide()',3500); //1초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
+}
+
+	
 </script>
 </head>
 
@@ -221,27 +259,31 @@
 
 
   <!--================Home Banner Area =================-->
-   <section class="home_banner_area mb-40">
-    <div class="banner_inner d-flex align-items-center">
+
+<div id="slide"  val="1" mx="3">
+	<li id="img1"><img src="${path}/img/banner/banner1.PNG"></li>
+  	<li id="img2"><img src="${path}/img/banner/banner2.PNG"></li>
+  	<li id="img3"><img src="${path}/img/banner/banner3.PNG"></li>
+</div>
+
+<%--    <img alt="" src="${path}/img/banner/banner.PNG"> --%>
+   <!-- <section class="home_banner_area mb-40">
+   <div class="banner_inner d-flex align-items-center">
       <div class="container">
-        <div class="banner_content row">
-          <div class="col-lg-12">
+      
+           <div class="banner_content row">
+        <div class="col-lg-12">
             <p class="sub text-uppercase">men Collection</p>
             <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
             <h4>Fowl saw dry which a above together place.</h4>
             <a class="main_btn mt-40" href="#">View Collection</a>
-          </div>
+          </div> 
         </div>
+        
       </div>
     </div>
-  </section>
+  </section>-->
   <!--================End Home Banner Area =================-->
-
-
-
-
-
-
 
 
 
