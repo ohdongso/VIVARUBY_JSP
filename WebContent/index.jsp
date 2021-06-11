@@ -61,295 +61,134 @@ function imgslide(){
 	
 	if( $val == $mx ){ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
 	else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
-	$("#img"+$val).fadeIn(500); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
+	$("#img"+$val).fadeIn(1000); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
 	
 	$("#slide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
 	setTimeout('imgslide()',3500); //1초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
 }
 
-	
 </script>
 </head>
 
 <body>
+
   <!--================ Header 시작. =================-->
-  <header class="header_area">
-    <div class="top_menu">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="float-left">
-              <p>Tel : 031-716-2113</p>
-              <p>매장위치찾기</p>
-            </div>
-          </div>
-
-          <!-- 우측 최상단, 로그인, 회원가입 -->
-          <div class="col-lg-5">
-            <div class="float-right">
-              <ul class="right_side">
-                          
-                <li>          
-                  <c:if test="${sessionScope.loginUser==null}">
-                  <a href="v_member/login.jsp">
-                    로그인
-                  </a>
-                  </c:if>
-                  <c:if test="${sessionScope.loginUser!=null}">
-                  <a href="#">
-                  ${loginName}님 환영합니다.
-                  </a>
-                  </c:if>
-                </li>
-                <li>
-                  <c:if test="${sessionScope.loginUser==null}">
-                  <a href="v_member/join.jsp">
-                    회원가입
-                  </a>
-                  </c:if>
-                  <c:if test="${sessionScope.loginUser!=null}">
-                  <a href="${path}/front?key=member&methodName=logout">
-                    로그아웃
-                  </a>
-                  </c:if>                   
-                </li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-    <div class="main_menu">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html">
-            <img src="img/logo.png" alt="" />
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          
-   		  <!-- 메인메뉴 시작부분 -->
-          <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-            <div class="row w-100 mr-0">
-              <div class="col-lg-7 pr-0">
-                <ul class="nav navbar-nav center_nav pull-right">
-                  
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false" >향수</a>
-                      <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">여성향수</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">남성향수</a>
-                      </li>     
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">남녀공용</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">향수공병</a>
-                      </li>
-                    </ul>
-                  </li>
-                                          
-       			  <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">선물세트</a>
-                  </li>
-                                          
-                  <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">스킨케어</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">1</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">2</a>
-                      </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  
-                  
-                 <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">문의사항</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">1</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">2</a>
-                      </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  
-                   <li class="nav-item submenu dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">기타</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">1</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="elements.html">2</a>
-                      </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  
-                  
-                </ul>
-              </div>
-
-              <div class="col-lg-5 pr-0">
-                <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-search" aria-hidden="true"></i>
-                    </a>
-                  </li>
-			      
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </li>
-				  
-				  <!-- 마이페이지 이동, 마이페이지에서 이동 할수 있도록 해야한다. -->
-                  <li class="nav-item">
-                    <a href="${path}/front?key=member&methodName=myInform" class="icons">
-                      <i class="ti-user" aria-hidden="true"></i>
-                    </a>
-                  </li>
-							
-                  <li class="nav-item">
-                    <a href="#" class="icons">
-                      <i class="ti-heart" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                       
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <jsp:include page="header.jsp"/>
   <!--================ 헤더 끝. =================-->
-
-
-
-
-
-
+  
   <!--================Home Banner Area =================-->
-
-<div id="slide"  val="1" mx="3">
+  <div id="slide"  val="1" mx="3">
 	<li id="img1"><img src="${path}/img/banner/banner1.PNG"></li>
   	<li id="img2"><img src="${path}/img/banner/banner2.PNG"></li>
   	<li id="img3"><img src="${path}/img/banner/banner3.PNG"></li>
-</div>
-
-<%--    <img alt="" src="${path}/img/banner/banner.PNG"> --%>
-   <!-- <section class="home_banner_area mb-40">
-   <div class="banner_inner d-flex align-items-center">
-      <div class="container">
-      
-           <div class="banner_content row">
-        <div class="col-lg-12">
-            <p class="sub text-uppercase">men Collection</p>
-            <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
-            <h4>Fowl saw dry which a above together place.</h4>
-            <a class="main_btn mt-40" href="#">View Collection</a>
-          </div> 
-        </div>
-        
-      </div>
-    </div>
-  </section>-->
+  </div>
   <!--================End Home Banner Area =================-->
-
-
-
-  <!-- Start feature Area -->
-  <section class="feature-area section_gap_bottom_custom">
+  
+  <!--================ new상품 =================-->
+  <section class="new_product_area section_gap_top section_gap_bottom_custom">
     <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="main_title">
+             <h1><span>NEW 상품</span></h1>
+            <p>이제 막 갓 나온 따끈 따끈한 신제품입니다.</p>
+            <a href="#">#완전 핫 신상</a> <a href="#">#지금금방</a> <a href="#">#뽑았어요</a>
+          </div>
+        </div>
+      </div>
+      
+
       <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="single-feature">
-            <a href="#" class="title">
-              <i class="flaticon-money"></i>
-              <h3>Money back gurantee</h3>
-              </a>
-            <p>Shall open divide a one</p>
+         <div class="col-lg-6">
+          <div class="new_product">
+            <h5 class="text-uppercase">${newDTO.productName}</h5>
+            <h3 class="text-uppercase">${newDTO.productContent}</h3>
+            <div class="product-img">
+              <img class="img-fluid" src="${path}/v_img/womanPerfume/${newDTO.productImg}" alt="" />
+            </div>
+            <h4><fmt:formatNumber value="${newDTO.productPrice}"/>원</h4>
+            <a href="#" class="main_btn">장바구니담기</a>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-feature">
-            <a href="#" class="title">
-              <i class="flaticon-truck"></i>
-              <h3>Free Delivery</h3>
-            </a>
-            <p>Shall open divide a one</p>
+	
+	    	<div class="col-lg-6 mt-5 mt-lg-0">
+          	<div class="row">
+          	
+          	<c:forEach items="${productNew}" var="newDTO">
+            <div class="col-lg-6 col-md-6">
+              <div class="single-product">
+                <div class="product-img">
+                  <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${newDTO.productImg}" alt="" />
+                  <div class="p_icon">
+                    <a href="#">
+                      <i class="ti-eye"></i>
+                    </a>
+                    <a href="#">
+                      <i class="ti-heart"></i>
+                    </a>
+                    <a href="#">
+                      <i class="ti-shopping-cart"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="product-btm">
+                  <a href="#" class="d-block">
+                    <h4>Nike latest sneaker</h4>
+                  </a>
+                  <div class="mt-3">
+                    <span class="mr-4"><fmt:formatNumber value="${newDTO.productPrice}"/>원</span>
+                    <del><fmt:formatNumber value="${newDTO.productPrice}"/>원</del>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </c:forEach>
+                       
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-feature">
-            <a href="#" class="title">
-              <i class="flaticon-support"></i>
-              <h3>Alway support</h3>
-            </a>
-            <p>Shall open divide a one</p>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-feature">
-            <a href="#" class="title">
-              <i class="flaticon-blockchain"></i>
-              <h3>Secure payment</h3>
-            </a>
-            <p>Shall open divide a one</p>
-          </div>
-        </div>
+         
       </div>
     </div>
   </section>
-  <!-- End feature Area -->
-
-  <!--================ Feature Product Area =================-->
+  <!--================ new제품 끝. =================-->
+  
+    <!--================ Offer Area =================-->
+<%--     <img alt="" src="${path}/img/banner/man.jpg" style="width: 100%; height: 50%; align-items: center;"> --%>
+    <section class="offer_area">
+    <div class="container">
+       <div class="row justify-content-center">
+        <div class="offset-lg-4 col-lg-6 text-center">
+      
+          <div class="offer_content">
+           
+            <h1 class="text-uppercase mb-40">남성향수</h1>
+            <h2 class="text-uppercase">20% off</h2>
+            <a href="#" class="main_btn mb-20 mt-5">바로가기</a>
+            <p>Limited Time Offer</p>
+            
+          </div>
+        </div>    
+      </div> 
+    </div>
+  </section> 
+  <!--================ End Offer Area =================-->
+  
+  <br><br><br><br>
+  <!-- 베스트 상품 -->
   <section class="feature_product_area section_gap_bottom_custom">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span>BEST 상품</span></h1>
-            <p>Bring called seed first of third give itself now ment</p>
+            <h1><span>BEST 상품</span> </h1>
+            <p>시선집중! 베스트상품!</p>
+            <a href="#">#베스트상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
         </div>
       </div>
 	  
-	  <!-- 최상단 이미지 시작, 베스트 상품 -->
+	  <!-- 베스트 상품 시작. -->
       <div class="row">
-      
       <c:forEach items="${productAllList}" var="productDTO" varStatus="state">      
        <!-- 베스트 상품1 -->
         <div class="col-lg-4 col-md-6">
@@ -357,7 +196,7 @@ function imgslide(){
             <div class="product-img">
               <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
-              
+               
                <!-- 상세보기 -->
                <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-eye"></i>
@@ -386,244 +225,24 @@ function imgslide(){
             </div>
           </div>
         </div>
-		</c:forEach>
-		
-		<!-- 베스트 상품2 -->
-<%--         <div class="col-lg-4 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/b.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Red women purses</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>       
-          </div>
-        </div> --%>
-		
-		<!-- 베스트 상품3 -->
-<%--         <div class="col-lg-4 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/c.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Men stylist Smart Watch</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div> --%>
-        
-        
-        
-        
+		</c:forEach> 
       </div>
     </div>
   </section>
-  <!--================ End Feature Product Area =================-->
+  <!--================ 베스트 상품 끝. =================-->
 
-  <!--================ Offer Area =================-->
-  <section class="offer_area">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="offset-lg-4 col-lg-6 text-center">
-          <div class="offer_content">
-            <h3 class="text-uppercase mb-40">all men’s collection</h3>
-            <h2 class="text-uppercase">50% off</h2>
-            <a href="#" class="main_btn mb-20 mt-5">Discover Now</a>
-            <p>Limited Time Offer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--================ End Offer Area =================-->
 
-  <!--================ New Product Area =================-->
-  <section class="new_product_area section_gap_top section_gap_bottom_custom">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="main_title">
-            <h2><span>new products</span></h2>
-            <p>Bring called seed first of third give itself now ment</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="new_product">
-            <h5 class="text-uppercase">collection of 2019</h5>
-            <h3 class="text-uppercase">Men’s summer t-shirt</h3>
-            <div class="product-img">
-              <img class="img-fluid" src="img/product/new-product/new-product1.png" alt="" />
-            </div>
-            <h4>$120.70</h4>
-            <a href="#" class="main_btn">Add to cart</a>
-          </div>
-        </div>
-
-        <div class="col-lg-6 mt-5 mt-lg-0">
-          <div class="row">
-            <div class="col-lg-6 col-md-6">
-              <div class="single-product">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="img/product/new-product/n1.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>Nike latest sneaker</h4>
-                  </a>
-                  <div class="mt-3">
-                    <span class="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-              <div class="single-product">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="img/product/new-product/n2.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>Men’s denim jeans</h4>
-                  </a>
-                  <div class="mt-3">
-                    <span class="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-              <div class="single-product">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="img/product/new-product/n3.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>quartz hand watch</h4>
-                  </a>
-                  <div class="mt-3">
-                    <span class="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-              <div class="single-product">
-                <div class="product-img">
-                  <img class="img-fluid w-100" src="img/product/new-product/n4.jpg" alt="" />
-                  <div class="p_icon">
-                    <a href="#">
-                      <i class="ti-eye"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-heart"></i>
-                    </a>
-                    <a href="#">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="product-btm">
-                  <a href="#" class="d-block">
-                    <h4>adidas sport shoe</h4>
-                  </a>
-                  <div class="mt-3">
-                    <span class="mr-4">$25.00</span>
-                    <del>$35.00</del>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--================ End New Product Area =================-->
-
-  <!--================ Inspired Product Area =================-->
+ 
+  <!--================ 추천상품 =================-->
   <section class="inspired_product_area section_gap_bottom_custom">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h2><span>Inspired products</span></h2>
-            <p>Bring called seed first of third give itself now ment</p>
+            <h1><span></span>MD'S 추천상품</h1>
+            <p>MD가 자신있게 추천드리는 상품입니다.</p>
+            <a href="#">#추천상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
         </div>
       </div>
@@ -855,7 +474,7 @@ function imgslide(){
       </div>
     </div>
   </section>
-  <!--================ End Inspired Product Area =================-->
+  <!--================ 추천상품 끝. =================-->
 
   <!--================ Start Blog Area =================-->
   <section class="blog-area section-gap">
@@ -863,8 +482,9 @@ function imgslide(){
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h2><span>latest blog</span></h2>
-            <p>Bring called seed first of third give itself now ment</p>
+            <h1><span>Premium Review</span></h1>
+            <p>매달 추첨을 통해 베스트 후기 1분에게 적립금을 드려요!</p>
+            <a href="#">#소중한 고객님 후기</a>
           </div>
         </div>
       </div>
@@ -950,78 +570,9 @@ function imgslide(){
   <!--================ End Blog Area =================-->
 
   <!--================ start footer Area  =================-->
-  <footer class="footer-area section_gap">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Top Products</h4>
-          <ul>
-            <li><a href="#">Managed Website</a></li>
-            <li><a href="#">Manage Reputation</a></li>
-            <li><a href="#">Power Tools</a></li>
-            <li><a href="#">Marketing Service</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Brand Assets</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Features</h4>
-          <ul>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Brand Assets</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-6 single-footer-widget">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="#">Guides</a></li>
-            <li><a href="#">Research</a></li>
-            <li><a href="#">Experts</a></li>
-            <li><a href="#">Agencies</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-6 single-footer-widget">
-          <h4>Newsletter</h4>
-          <p>You can trust us. we only send promo offers,</p>
-          <div class="form-wrap" id="mc_embed_signup">
-            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-              method="get" class="form-inline">
-              <input class="form-control" name="EMAIL" placeholder="Your Email Address" onfocus="this.placeholder = ''"
-                onblur="this.placeholder = 'Your Email Address '" required="" type="email">
-              <button class="click-btn btn btn-default">Subscribe</button>
-              <div style="position: absolute; left: -5000px;">
-                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-              </div>
-
-              <div class="info"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom row align-items-center">
-        <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-        <div class="col-lg-4 col-md-12 footer-social">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-dribbble"></i></a>
-          <a href="#"><i class="fa fa-behance"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <jsp:include page="footer.jsp"/>
   <!--================ End footer Area  =================-->
-
+  
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery-3.2.1.min.js"></script>

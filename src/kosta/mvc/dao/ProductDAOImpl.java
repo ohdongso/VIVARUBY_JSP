@@ -21,7 +21,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
 		
-		String sql = "SELECT * FROM PRODUCT";
+		String sql = "SELECT * FROM PRODUCT ORDER BY PRODUCT_RDATE";
 		
 		try {
 			con = DbUtil.getConnection();
@@ -31,6 +31,7 @@ public class ProductDAOImpl implements ProductDAO {
 			while(rs.next()) {
 				ProductDTO product = new ProductDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), 
 			    rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12));
+				
 				list.add(product);
 			}
 			
@@ -40,6 +41,37 @@ public class ProductDAOImpl implements ProductDAO {
 		return list;
 	}
 	
+	/**
+	 * 배스트 상품 조회
+	 * */
+	@Override
+	public List<ProductDTO> selectMaxPrice() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ProductDTO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM PRODUCT ORDER BY PRODUCT_SELL DESC";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();	
+			while(rs.next()) {
+				ProductDTO product = new ProductDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), 
+			    rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12));
+				
+				list.add(product);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
+
 	/**
 	 * 상품상세보기
 	 * */

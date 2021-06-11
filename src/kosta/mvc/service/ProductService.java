@@ -12,11 +12,16 @@ public interface ProductService {
 	List<ProductDTO> selectAll() throws SQLException;
 	
 	/**
+	 * 배스트 상품 조회
+	 * */
+	List<ProductDTO> selectMaxPrice() throws SQLException;
+	
+	/**
 	 * 상품상세보기
 	 * */
 	ProductDTO productDetail(int productCode) throws SQLException;
 	
-	
+
 	
 	
 	
