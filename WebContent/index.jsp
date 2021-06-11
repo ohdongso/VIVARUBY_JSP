@@ -47,6 +47,22 @@
      height: 100%; 
     }  
 	
+	.jb-wrap {
+	width: 100%;
+	position: relative;
+	}
+			
+	.jb-wrap img {
+	width: 100%;
+	}
+			
+	.jb-text {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 60%;
+	left: 75%;
+	}
 
 </style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
@@ -97,7 +113,6 @@ function imgslide(){
         </div>
       </div>
       
-
       <div class="row">
          <div class="col-lg-6">
           <div class="new_product">
@@ -153,24 +168,22 @@ function imgslide(){
   <!--================ new제품 끝. =================-->
   
     <!--================ Offer Area =================-->
+
 <%--     <img alt="" src="${path}/img/banner/man.jpg" style="width: 100%; height: 50%; align-items: center;"> --%>
-    <section class="offer_area">
-    <div class="container">
-       <div class="row justify-content-center">
-        <div class="offset-lg-4 col-lg-6 text-center">
-      
-          <div class="offer_content">
+  
+		<div class="jb-wrap">
+			<div class="jb-image"><img src="${path}/img/banner/man.jpg" alt=""></div>
+			<div class="jb-text">
+				<h1 class="text-uppercase mb-40">all man's collection</h1>
+            	<h2 class="text-uppercase">20% off</h2>
+            	<a href="${path}" class="main_btn mb-20 mt-5">바로가기</a>
+            	<p>Limited Time Offer</p>
+			</div>
+		</div>
            
-            <h1 class="text-uppercase mb-40">남성향수</h1>
-            <h2 class="text-uppercase">20% off</h2>
-            <a href="#" class="main_btn mb-20 mt-5">바로가기</a>
-            <p>Limited Time Offer</p>
-            
-          </div>
-        </div>    
-      </div> 
-    </div>
-  </section> 
+
+
+
   <!--================ End Offer Area =================-->
   
   <br><br><br><br>
@@ -189,7 +202,7 @@ function imgslide(){
 	  
 	  <!-- 베스트 상품 시작. -->
       <div class="row">
-      <c:forEach items="${productAllList}" var="productDTO" varStatus="state">      
+      <c:forEach items="${productBest}" var="productDTO" varStatus="state">      
        <!-- 베스트 상품1 -->
         <div class="col-lg-4 col-md-6">
           <div class="single-product">
@@ -219,7 +232,7 @@ function imgslide(){
                 <h4>${productDTO.productName}</h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" /></span>
+                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" />원</span>
                 <del><fmt:formatNumber value="${productDTO.productPrice}" /></del>
               </div>
             </div>
@@ -248,10 +261,11 @@ function imgslide(){
       </div>
 
       <div class="row">
+        <c:forEach items="${productLike}" var="productDTO" varStatus="state">      
         <div class="col-lg-3 col-md-6">
           <div class="single-product">
             <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i1.jpg" alt="" />
+              <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
                 <a href="#">
                   <i class="ti-eye"></i>
@@ -266,211 +280,16 @@ function imgslide(){
             </div>
             <div class="product-btm">
               <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
+                <h4>${productDTO.productName}</h4>
               </a>
               <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
+                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" />원</span>
+                <del><fmt:formatNumber value="${productDTO.productPrice}" />원</del>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i2.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i3.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i4.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i5.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i6.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i7.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="img/product/inspired-product/i8.jpg" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
+		</c:forEach>
       </div>
     </div>
   </section>

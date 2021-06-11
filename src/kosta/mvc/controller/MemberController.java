@@ -29,10 +29,9 @@ public class MemberController implements Controller {
 	public ModelAndView memberJoin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String pwc = request.getParameter("pwc");
 		String name = request.getParameter("name");
 		
-		String addr1 = request.getParameter("addr1");
+		String addr1 = request.getParameter("address2");
 		String addr2 = request.getParameter("addr2");
 		String addr = addr1 + " " + addr2;
 		
@@ -44,7 +43,7 @@ public class MemberController implements Controller {
 		memberService.memberJoin(memberDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
+		mv.setViewName("Main.jsp");
 		
 		return mv;
 	}	
@@ -63,7 +62,8 @@ public class MemberController implements Controller {
 		session.setAttribute("loginName", memberDTO.getName());
 		session.setAttribute("loginState", memberDTO.getState());
 		
-		ModelAndView mv = new ModelAndView("index.jsp", true);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main.jsp");
 		
 		return mv;
 	}
@@ -74,7 +74,7 @@ public class MemberController implements Controller {
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return new ModelAndView("index.jsp", true);
+		return new ModelAndView("Main.jsp", true);
 	}
 	
 	/**
@@ -123,7 +123,7 @@ public class MemberController implements Controller {
 		String pw = request.getParameter("pw");
 		memberService.deleteMember(id, pw);
 		
-		ModelAndView mv = new ModelAndView("index.jsp", true);
+		ModelAndView mv = new ModelAndView("Main.jsp", true);
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
