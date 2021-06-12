@@ -48,19 +48,19 @@
                           
                 <li>          
                   <c:if test="${sessionScope.loginUser==null}">
-                  <a href="v_member/login.jsp">
+                  <a href="${path}/v_member/login.jsp">
                     로그인
                   </a>
                   </c:if>
                   <c:if test="${sessionScope.loginUser!=null}">
                   <a href="#">
-                  ${loginName}님 환영합니다.
+                  ${loginUser}님 환영합니다.
                   </a>
                   </c:if>
                 </li>
                 <li>
                   <c:if test="${sessionScope.loginUser==null}">
-                  <a href="v_member/join.jsp">
+                  <a href="${path}/v_member/join.jsp">
                     회원가입
                   </a>
                   </c:if>
@@ -89,7 +89,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light w-100">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html">
+          <a class="navbar-brand logo_h" href="${path}/Main.jsp">
             <img src="${path}/img/logo.png" alt="" />
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

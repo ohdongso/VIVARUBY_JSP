@@ -122,7 +122,7 @@ function imgslide(){
               <img class="img-fluid" src="${path}/v_img/womanPerfume/${newDTO.productImg}" alt="" />
             </div>
             <h4><fmt:formatNumber value="${newDTO.productPrice}"/>원</h4>
-            <a href="#" class="main_btn">장바구니담기</a>
+            <a href="${path}/front?key=product&methodName=productDetail&productCode=${newDTO.productCode}" class="main_btn">바로가기</a>
           </div>
         </div>
 	
@@ -135,7 +135,7 @@ function imgslide(){
                 <div class="product-img">
                   <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${newDTO.productImg}" alt="" />
                   <div class="p_icon">
-                    <a href="#">
+                    <a href="${path}/front?key=product&methodName=productDetail&productCode=${newDTO.productCode}">
                       <i class="ti-eye"></i>
                     </a>
                     <a href="#">
@@ -267,7 +267,7 @@ function imgslide(){
             <div class="product-img">
               <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
-                <a href="#">
+                <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-eye"></i>
                 </a>
                 <a href="#">
