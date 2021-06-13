@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 <style type="text/css">
-
+ 
     #slide{
       position:relative;
       width: 100%;
