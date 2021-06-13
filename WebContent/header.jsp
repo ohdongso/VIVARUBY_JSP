@@ -54,7 +54,7 @@
                   </c:if>
                   <c:if test="${sessionScope.loginUser!=null}">
                   <a href="#">
-                  ${loginUser}님 환영합니다.
+                  ${loginName}님 환영합니다.
                   </a>
                   </c:if>
                 </li>
@@ -188,7 +188,7 @@
                   </li>
 			      
                   <li class="nav-item">
-                    <a href="#" class="icons">
+                    <a href="${path}/front?key=cart&methodName=selectAllCart" class="icons">
                       <i class="ti-shopping-cart"></i>
                     </a>
                   </li>
@@ -199,9 +199,10 @@
                       <i class="ti-user" aria-hidden="true"></i>
                     </a>
                   </li>
-							
+				  
+				  <!-- 찜하기로 이동 -->
                   <li class="nav-item">
-                    <a href="#" class="icons">
+                    <a href="${path}/front?key=wish&methodName=selectAllWish" class="icons">
                       <i class="ti-heart" aria-hidden="true"></i>
                     </a>
                   </li>

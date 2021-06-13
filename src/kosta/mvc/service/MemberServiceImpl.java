@@ -26,7 +26,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return member;
 	}
-
+	
+	/**
+	 * 아이디에 해당하는 레코드 검색
+	 */
 	@Override
 	public MemberDTO myInform(String id, boolean flag) throws SQLException {
 		MemberDTO memberDTO = memberDAO.myInform(id);
@@ -37,7 +40,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDTO;
 	}
-
+	
+	/**
+	 * 회원정보수정
+	 */
 	@Override
 	public void updateMemberInfo(MemberDTO memberDTO) throws SQLException {
 		int result = memberDAO.updateMemberInfo(memberDTO);
@@ -54,7 +60,5 @@ public class MemberServiceImpl implements MemberService {
 	int result = memberDAO.deleteMember(id, pw);
 		if(result==0)throw new SQLException("회원탈퇴 실패. 다시 시도해주세요");
 	}
-	
-	
-	
+		
 }

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,19 +25,19 @@ public class insertWishServlet extends HttpServlet {
 		int productCode = Integer.parseInt(request.getParameter("productCode"));
 		
 		WishDAO dao = new WishDAOImpl();
-//		WishDTO wishDTO = dao.selectWish(id);
+		WishDTO wishDTO = dao.selectWish(id, productCode);
+		int result = 0;
+	
 		
-//		if(wishDTO == null) {
-//			// wish생성
-//			
-//			// wish에 상품 등록
-//			
-//		} else {
-//			
-//			
-//		}
+		PrintWriter out = response.getWriter();
 		
-//		WishDTO wishDTO = new WishDTO(productCode, id);
+		if(wishDTO != null) {
+			out.println(result);
+		} else {
+			result = dao.insertWish(productCode, id);
+			out.println(result);
+		}
+			
 		
 	}
 }

@@ -31,11 +31,14 @@
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		alert(1);
-		
+
 		// 찜하기.
 		$("[name=wish]").click(function() {
-			alert("${sessionScope.loginUser}");
+			var session = "${sessionScope.loginUser}";
+			if(session == "") {
+				alert("로그인하고 서비스를 이용해 주세요.");
+				return;
+			}
 			
 			var urlAddr = "${path}/insertWish";
 
@@ -45,7 +48,12 @@
 				dataType : "text", // 서버가 응답해주는 데이터의 타입(html, text, json 중의 한개), 기본 text
 				data: {id:"${sessionScope.loginUser}", productCode:$(this).attr("id")}, // 폼전송 : 서버에게 보낼 parameter 정보, 전체를 전달
 				success : function(result) {
-					alert("성공");
+					
+					if(result == 0) {
+						alert("이미 관심 상품에 등록 되었습니다.");
+					} else {
+						alert("관심 상품에 등록 되었습니다.");
+					}
 				},
 				error: function(err) {
 					alert(err + "발생했습니다.");
@@ -160,7 +168,7 @@
                 <a class="icon_btn" href="#">
                   <i class="lnr lnr lnr-heart" name="wish" id="${productDTO.productCode}"></i>
                 </a>
-                             
+                        
               </div>
             </div>
           </div>

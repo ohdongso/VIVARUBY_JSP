@@ -178,8 +178,7 @@ public class MemberDAOImpl implements MemberDAO {
 			DbUtil.dbClose(ps, con);
 		}
 		
-		return result;
-		
+		return result;		
 	}
 	
 	

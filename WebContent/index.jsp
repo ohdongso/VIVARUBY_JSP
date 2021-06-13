@@ -67,6 +67,51 @@
 </style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+	$(function() {
+		// 찜하기.
+		$("[name=wish]").click(function() {
+			var session = "${sessionScope.loginUser}";
+			if(session == "") {
+				alert("로그인하고 서비스를 이용해 주세요.");
+				return;
+			}
+			
+			var urlAddr = "${path}/insertWish";
+
+			$.ajax({
+				url : urlAddr, // 서버요청주소
+				type : "post", // method방식 = 전송방식(get, post, put, delete)
+				dataType : "text", // 서버가 응답해주는 데이터의 타입(html, text, json 중의 한개), 기본 text
+				data: {id:"${sessionScope.loginUser}", productCode:$(this).attr("id")}, // 폼전송 : 서버에게 보낼 parameter 정보, 전체를 전달
+				success : function(result) {
+					
+					if(result == 0) {
+						alert("이미 관심 상품에 등록 되었습니다.");
+					} else {
+						alert("관심 상품에 등록 되었습니다.");
+					}
+				},
+				error: function(err) {
+					alert(err + "발생했습니다.");
+				}
+			}); // ajax끝.
+		}); // 찜하기 끝.
+	}); // jQuery끝.
+// 팝업
+/* function openPopup() {
+ 	alert(1);
+    var _width = '650';
+    var _height = '380';
+ 
+    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+    var _left = Math.ceil(( window.screen.width - _width )/2);
+    var _top = Math.ceil(( window.screen.height - _height )/2); 
+ 
+    window.open('/url', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+ 
+}
+openPopup(); */
+
 imgslide(); //페이지가 로딩될때 함수를 실행합니다
 
 function imgslide(){
@@ -139,7 +184,7 @@ function imgslide(){
                       <i class="ti-eye"></i>
                     </a>
                     <a href="#">
-                      <i class="ti-heart"></i>
+                      <i class="ti-heart" name="wish" id="${newDTO.productCode}"></i>
                     </a>
                     <a href="#">
                       <i class="ti-shopping-cart"></i>
@@ -217,7 +262,7 @@ function imgslide(){
                 
                 <!-- 찜하기 -->
                 <a href="#">
-                  <i class="ti-heart"></i>
+                  <i class="ti-heart" name="wish" id="${productDTO.productCode}" ></i>
                 </a>
                 
                 <!-- 장바구니 담기 -->
@@ -271,7 +316,7 @@ function imgslide(){
                   <i class="ti-eye"></i>
                 </a>
                 <a href="#">
-                  <i class="ti-heart"></i>
+                  <i class="ti-heart" name="wish" id="${productDTO.productCode}"></i>
                 </a>
                 <a href="#">
                   <i class="ti-shopping-cart"></i>
