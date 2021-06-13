@@ -68,6 +68,7 @@
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		// commit확인
 		// 찜하기.
 		$("[name=wish]").click(function() {
 			var session = "${sessionScope.loginUser}";
