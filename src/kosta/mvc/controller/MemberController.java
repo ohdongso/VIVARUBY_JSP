@@ -47,12 +47,11 @@ public class MemberController implements Controller {
 		memberService.memberJoin(memberDTO);
 		
 		// 회원가입시 자동 등록되는 쿠폰, 2번 coupon DTO를 만들어서 넘겨주네.
-		CouponDTO couponDTO1 = new CouponDTO(0, id, name, 0, 0, addr, phone, email);
-		CouponDTO couponDTO2 = new CouponDTO(0, id, name, 0, 0, addr, phone, email);
+		CouponDTO couponDTO1 = new CouponDTO(0, id, "최초 회원가입 10% 할인쿠폰", 10, 0, null, null, null);
+		CouponDTO couponDTO2 = new CouponDTO(0, id, "최초 회원가입 10,000원 할인쿠폰", 0, 10000, null, null, null);
 		
-		
-//		couponDAO.insertCoupon(couponDTO1);
-//		couponDAO.insertCoupon(couponDTO2);
+		couponDAO.insertCoupon(couponDTO1);
+		couponDAO.insertCoupon(couponDTO2);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Main.jsp");

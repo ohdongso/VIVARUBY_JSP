@@ -25,7 +25,6 @@ public class CouponDTO {
 	}
 
 
-
 	public int getCouponCode() {
 		return couponCode;
 	}
