@@ -14,6 +14,9 @@ public class ProductDTO {
 	private String productImg1;
 	private String productRdate;
 	
+	private int cartQty;
+	private int totalPrice;
+	
 	public ProductDTO() {}
 	public ProductDTO(int productCode, int productCategory, int productPrice, int productStock, int productSell,
 			int productGender, int productCapacity, String productName, String productContent, String productImg,
@@ -104,5 +107,17 @@ public class ProductDTO {
 	}
 	public void setProductRdate(String productRdate) {
 		this.productRdate = productRdate;
+	}
+	public int getCartQty() {
+		return cartQty;
+	}
+	public void setCartQty(int cartQty) {
+		this.cartQty = cartQty;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }

@@ -72,7 +72,7 @@
                 </li>
                   <c:if test="${sessionScope.loginUser!=null}">
 					<li>
-						<a href="#">
+						<a href="${path}/front?key=coupon&methodName=selectAllCoupon">
 					 	쿠폰함
 						</a>
 					</li>
@@ -111,16 +111,16 @@
                       aria-expanded="false" >향수</a>
                       <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">여성향수</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCate">여성향수</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">남성향수</a>
+                        <a class="nav-link" href="${path}/">남성향수</a>
                       </li>     
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">남녀공용</a>
+                        <a class="nav-link" href="${path}/">남녀공용</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">향수공병</a>
+                        <a class="nav-link" href="${path}/">향수공병</a>
                       </li>
                     </ul>
                   </li>
@@ -134,12 +134,10 @@
                       aria-expanded="false">스킨케어</a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">1</a>
+                        <a class="nav-link" href="tracking.html">바디케어</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">2</a>
-                      </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">3</a>
+                        <a class="nav-link" href="elements.html">화장품</a>
                       </li>
                     </ul>
                   </li>

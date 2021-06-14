@@ -28,7 +28,6 @@ public class insertWishServlet extends HttpServlet {
 		WishDTO wishDTO = dao.selectWish(id, productCode);
 		int result = 0;
 	
-		
 		PrintWriter out = response.getWriter();
 		
 		if(wishDTO != null) {
@@ -37,7 +36,8 @@ public class insertWishServlet extends HttpServlet {
 			result = dao.insertWish(productCode, id);
 			out.println(result);
 		}
-			
-		
 	}
+	
+	
+	
 }

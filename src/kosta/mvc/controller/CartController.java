@@ -36,12 +36,35 @@ public class CartController implements Controller{
 	 * cart테이블에 있는 전체정보 가져오기
 	 * */
 	public ModelAndView selectAllCart(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		System.out.println("selectAllCart");
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("loginUser");
 		
-		return null;
+		List<CartDTO> cartDtoList = cartService.selectAllCart(id);
+		List<ProductDTO> productList = new ArrayList<ProductDTO>();
+		int totalAllPrice = 0;
+		
+		if(cartDtoList.size() != 0) {
+			int len = cartDtoList.size();
+			
+			for(int i = 0; i < len; i++) {
+				ProductDTO productDTO = productDao.productDetail(cartDtoList.get(i).getProductCode());
+				productDTO.setCartQty(cartDtoList.get(i).getCartQty());
+				
+				int totalPrice =  productDTO.getCartQty() * productDTO.getProductPrice();
+				totalAllPrice += totalPrice;
+				productDTO.setTotalPrice(totalPrice);
+				
+				productList.add(productDTO);
+			}
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		request.setAttribute("productList", productList);
+		request.setAttribute("totalAllPrice", totalAllPrice);
+		mv.setViewName("v_cart/cart.jsp");
+		
+		return mv;
 	}
-	
-	
 	
 	/**
 	 * 장바구니에 등록하는 기능.
@@ -71,6 +94,45 @@ public class CartController implements Controller{
 		
 		return mv;
 	}
+	
+	/**
+	 * 장바구니 상품 삭제, deleteWish
+	 * */
+	public ModelAndView deleteCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int productCode = Integer.parseInt(request.getParameter("productCode"));
+		cartService.deleteCart(productCode);
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("loginUser");
+		
+		List<CartDTO> cartDtoList = cartService.selectAllCart(id);
+		
+		List<ProductDTO> productList = new ArrayList<ProductDTO>();
+		int totalAllPrice = 0;
+		
+		if(cartDtoList.size() != 0) {
+			int len = cartDtoList.size();
+			
+			for(int i = 0; i < len; i++) {
+				ProductDTO productDTO = productDao.productDetail(cartDtoList.get(i).getProductCode());
+				productDTO.setCartQty(cartDtoList.get(i).getCartQty());
+				
+				int totalPrice =  productDTO.getCartQty() * productDTO.getProductPrice();
+				totalAllPrice += totalPrice;
+				productDTO.setTotalPrice(totalPrice);
+				
+				productList.add(productDTO);
+			}
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		request.setAttribute("productList", productList);
+		request.setAttribute("totalAllPrice", totalAllPrice);
+		mv.setViewName("v_cart/cart.jsp");
+		
+		return mv;
+	}
+	
 	
 	
 	

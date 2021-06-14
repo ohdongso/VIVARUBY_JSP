@@ -77,11 +77,18 @@ public class ProductController implements Controller {
 		request.setAttribute("productDTO", productDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("v_womanPerfume/perfumeDetail.jsp");
+		mv.setViewName("v_perfume/perfumeDetail.jsp");
 		
 		return mv;
 	}
-
+	
+	/**
+	 * index.jsp페이지, 상품검색
+	 */
+	public ModelAndView selectCatego(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

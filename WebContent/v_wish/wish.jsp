@@ -62,8 +62,8 @@
 </head>
 <body>
  	<!-- wishCode, productCode, id -->
-	${wishDTOList} / wishDTOList <br>
-	${productList} / productList
+<%-- 	${wishDTOList} / wishDTOList <br> --%>
+<%-- 	${productList} / productList --%>
 	
 	<!--================ Header 시작. =================-->
   	<jsp:include page="../header.jsp" />
@@ -168,6 +168,7 @@
               </tbody>
           		
               </c:forEach>
+            	
             	
               
               

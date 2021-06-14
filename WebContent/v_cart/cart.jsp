@@ -34,9 +34,9 @@
     	height: 100px;
     }
         
-    tr, td{
+     tr, td{
     	height: 10px;
-    }
+     }
     
     .main_btn {
      	margin-top: 3px;
@@ -46,9 +46,14 @@
     
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	
-	
-	
+	$(function() {
+		$("#delete").click(function() {
+			if(confirm("상품을 삭제하시겠습니까?")) {} 
+			else {
+				return false;
+			}
+		});
+	});
 </script>
 
 </head>
@@ -79,7 +84,8 @@
                   <th scope="col">상품명</th>
                   <th scope="col">가격</th>
                   <th scope="col">수량</th>
-                  <th scope="col">장바구니</th>
+                  <th scope="col">Total Price</th>
+                  <th scope="col">결제</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,152 +111,53 @@
                   
                   <!-- 상품가격 -->
                   <td>
-                    <h5><fmt:formatNumber value="${productDTO.productPrice}"/>원</h5>
+                   <fmt:formatNumber value="${productDTO.productPrice}"/>원
                   </td>
                   
-                  <!-- 수량 -->
+                  <!-- 총 수량 -->
                   <td>
-
-                   <div class="product_count">
-                   
-                   		<input
-                        type="text"
-                        name="qty"
-                        id="sst"
-                        maxlength="12"
-                        value="1"
-                        title="Quantity:"
-                        class="input-text qty"
-                      />
-                      
-                      <!-- up -->
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                        class="increase items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-up"></i>
-                      </button>
-                      
-                      
-                      <!-- down -->
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                        class="reduced items-count"
-                        type="button"
-                      >
-                        <i class="lnr lnr-chevron-down"></i>
-                      </button>
-                   
-                   </div>
-
-                   
+                  	${productDTO.cartQty}개
+                  </td>
+                  
+                  <!-- 총가격 -->
+                  <td>
+                  	<h5><fmt:formatNumber value="${productDTO.totalPrice}" />원</h5>
                   </td>
                   
                   <!-- 장바구니 담기 -->
                   <td>
-                  	<a class="main_btn" href="#" onclick="insertCart()" id="${productDTO.productCode}">장바구니</a><br>
-                  	<a class="main_btn" href="${path}/front?key=wish&methodName=deleteWish&productCode=${productDTO.productCode}">삭제</a>	    
+                  	<a class="main_btn" href="#" onclick="" id="${productDTO.productCode}">주문하기</a><br>
+                  	<a class="main_btn" id="delete" href="${path}/front?key=cart&methodName=deleteCart&productCode=${productDTO.productCode}">삭제</a>	    
                   </td>
                   
                 </tr>
-                    
-              </tbody>
+                </tbody>                
               </c:forEach>
               
-              <!-- 장바구니 2번째 시작부분. -->
-              <tr class="bottom_button">
-                  <td>
-                    <a class="gray_btn" href="#">Update Cart</a>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <div class="cupon_text">
-                      <input type="text" placeholder="Coupon Code" />
-                      <a class="main_btn" href="#">Apply</a>
-                      <a class="gray_btn" href="#">Close Coupon</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <h5>Subtotal</h5>
-                  </td>
-                  <td>
-                    <h5>$2160.00</h5>
-                  </td>
-                </tr>
-                <tr class="shipping_area">
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <h5>Shipping</h5>
-                  </td>
-                  <td>
-                    <div class="shipping_box">
-                      <ul class="list">
-                        <li>
-                          <a href="#">Flat Rate: $5.00</a>
-                        </li>
-                        <li>
-                          <a href="#">Free Shipping</a>
-                        </li>
-                        <li>
-                          <a href="#">Flat Rate: $10.00</a>
-                        </li>
-                        <li class="active">
-                          <a href="#">Local Delivery: $2.00</a>
-                        </li>
-                      </ul>
-                      <h6>
-                        Calculate Shipping
-                        <i class="fa fa-caret-down" aria-hidden="true"></i>
-                      </h6>
-                      <select class="shipping_select">
-                        <option value="1">Bangladesh</option>
-                        <option value="2">India</option>
-                        <option value="4">Pakistan</option>
-                      </select>
-                      <select class="shipping_select">
-                        <option value="1">Select a State</option>
-                        <option value="2">Select a State</option>
-                        <option value="4">Select a State</option>
-                      </select>
-                      <input type="text" placeholder="Postcode/Zipcode" />
-                      <a class="gray_btn" href="#">Update Details</a>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="out_button_area">
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <div class="checkout_btn_inner">
-                      <a class="gray_btn" href="#">Continue Shopping</a>
-                      <a class="main_btn" href="#">Proceed to checkout</a>
-                    </div>
-                  </td>
-                </tr>
+              
+           
+             
               </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--================End Cart Area =================-->
-              
-              
-              
             </table>  
           </div>
         </div>
+       <!-- 장바구니 2번째 시작부분. -->
+       <hr>
+	        
+       		<h3 style="margin-left : 72%">총 합계 : <fmt:formatNumber value="${totalAllPrice}" />원 </h3>
+  		    
+       <hr>
+         
+    		<a class="main_btn" href="#" style="margin-left: 75%">전체주문하기</a>
+  
       </div>
     </section>
+    
+
     <!--================End Cart Area =================-->
+              
+              
+          
   	
   	
   	<!--================ start footer Area  =================-->

@@ -54,6 +54,7 @@
 					} else {
 						alert("관심 상품에 등록 되었습니다.");
 					}
+					
 				},
 				error: function(err) {
 					alert(err + "발생했습니다.");

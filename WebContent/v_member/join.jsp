@@ -93,16 +93,12 @@ function checkValue(){
          alert("이름을 입력하세요.");
          return false;
      }
-
-    if(!join.pass.value){
-       alert("비밀번호를 입력하세요.");
-       return false;
-    }
    
      if(!join.phone.value){
-         alert("전화번호을 입력하세요.");
+         alert("연락처를 입력하세요.");
          return false;
-     } 
+     }
+     alert("회원가입을 축하합니다. 로그인 후 쿠폰함을 확인해주세요.^^");
  }
 	
 	$(function() {
@@ -148,10 +144,7 @@ function checkValue(){
 					alert(err+"비밀번호 조회 에러.");
 				}
 			});		
-		});
-		
-		
-		
+		});	
 	}); // jQuery 끝.
 	
 </script>
@@ -240,7 +233,7 @@ function checkValue(){
                            <!-- 연락처 -->
                                  <tr>
                                     <th><span class="titR">*</span> 연락처</th>
-                                    <td><input type="text" name="phone" value=""
+                                    <td><input type="text" name="phone" id="phone" value=""
                                        class="memtxt" style="width: 338px; ime-mode: active;"
                                        minlength="4" maxlength="20"></td>
                                  </tr>      
@@ -281,7 +274,7 @@ function checkValue(){
         <!-- 회원가입 버튼 -->
         <div class="btn_join">
             <input type="submit" class="button" value="확인" class="submit">
-              <input type="reset" class="button" value="취소" class="cancel">
+            <input type="reset" class="button" value="취소" class="cancel">
         </div>
         <!-- //회원가입 버튼 -->
 

@@ -20,4 +20,5 @@ public interface ProductDAO {
 	 * 상품상세보기
 	 * */
 	ProductDTO productDetail(int productCode) throws SQLException;
+	
 }

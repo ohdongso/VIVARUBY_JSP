@@ -6,6 +6,8 @@ public class CartDTO {
 	private int productCode;
 	private int cartQty;
 	
+	
+	
 	public CartDTO() {}
 	public CartDTO(int cartCode, String id, int productCode, int cartQty) {
 		super();
