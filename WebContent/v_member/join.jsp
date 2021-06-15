@@ -150,7 +150,7 @@ function checkValue(){
 </script>
 </head>
 <body>
-<!--================ Header 시작. =================-->
+  <!--================ Header 시작. =================-->
   <jsp:include page="../header.jsp" />
   <!--================ Header 끝. =================-->
 

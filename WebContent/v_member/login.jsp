@@ -98,7 +98,7 @@
   <jsp:include page="../header.jsp" />
   <!--================ Header 끝. =================-->
   
-     <div id="Tit_NewMembe">
+    <div id="Tit_NewMembe">
       <h1 style="color: white;">
      	<strong>로그인</strong>
       </h1>

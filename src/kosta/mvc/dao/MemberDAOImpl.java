@@ -181,6 +181,8 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;		
 	}
 	
+
+	
 	
 	
 	

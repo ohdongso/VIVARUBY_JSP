@@ -6,10 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import kosta.mvc.dao.CouponDAO;
 import kosta.mvc.dao.CouponDAOImpl;
+import kosta.mvc.dao.MemberDAO;
+import kosta.mvc.dao.MemberDAOImpl;
 import kosta.mvc.dto.CouponDTO;
 import kosta.mvc.dto.MemberDTO;
 import kosta.mvc.service.MemberService;
@@ -19,6 +20,7 @@ public class MemberController implements Controller {
 	
 	private MemberService memberService = new MemberServiceImpl();
 	private CouponDAO couponDAO = new CouponDAOImpl();
+	private MemberDAO memberDAO = new MemberDAOImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -45,8 +47,8 @@ public class MemberController implements Controller {
 		MemberDTO memberDTO = new MemberDTO(id, pw, name, addr, phone, email, 0, null);
 		
 		memberService.memberJoin(memberDTO);
-		
-		// 회원가입시 자동 등록되는 쿠폰, 2번 coupon DTO를 만들어서 넘겨주네.
+	
+		// 회원가입시 자동 등록되는 쿠폰, 2번 coupon DTO를 만들어서 넘겨줘야한다.
 		CouponDTO couponDTO1 = new CouponDTO(0, id, "최초 회원가입 10% 할인쿠폰", 10, 0, null, null, null);
 		CouponDTO couponDTO2 = new CouponDTO(0, id, "최초 회원가입 10,000원 할인쿠폰", 0, 10000, null, null, null);
 		

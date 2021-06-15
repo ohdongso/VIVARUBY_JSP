@@ -69,6 +69,7 @@
   	<jsp:include page="../header.jsp" />
   	<!--================ Header 끝. =================-->
 	
+	<!-- small banner -->
 	<div id="Tit_NewMembe">
       <h1 style="color: white;">
      	<strong>관심상품</strong>

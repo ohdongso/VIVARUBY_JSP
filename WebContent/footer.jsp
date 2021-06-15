@@ -30,7 +30,7 @@
 <body>
 
   <!--================ start footer Area  =================-->
-  <footer class="footer-area section_gap">
+  <footer class="footer-area section_gap" style="margin-bottom: -120px">
     <div class="container">
       <div class="row">
         <div class="col-lg-2 col-md-6 single-footer-widget">
@@ -51,6 +51,7 @@
             <li><a href="#">Terms of Service</a></li>
           </ul>
         </div>
+        
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Features</h4>
           <ul>
@@ -60,6 +61,7 @@
             <li><a href="#">Terms of Service</a></li>
           </ul>
         </div>
+        
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Resources</h4>
           <ul>
@@ -69,6 +71,8 @@
             <li><a href="#">Agencies</a></li>
           </ul>
         </div>
+        
+        
         <div class="col-lg-4 col-md-6 single-footer-widget">
           <h4>Newsletter</h4>
           <p>You can trust us. we only send promo offers,</p>
@@ -86,6 +90,8 @@
             </form>
           </div>
         </div>
+        
+        
       </div>
       <div class="footer-bottom row align-items-center">
         <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -104,7 +110,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="${path}/js/jquery-3.2.1.min.js"></script>
+<%--   <script src="${path}/js/jquery-3.2.1.min.js"></script>
   <script src="${path}/js/popper.js"></script>
   <script src="${path}/js/bootstrap.min.js"></script>
   <script src="${path}/js/stellar.js"></script>
@@ -117,7 +123,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="${path}/vendors/counter-up/jquery.waypoints.min.js"></script>
   <script src="${path}/vendors/counter-up/jquery.counterup.js"></script>
   <script src="${path}/js/mail-script.js"></script>
-  <script src="${path}/js/theme.js"></script>
+  <script src="${path}/js/theme.js"></script> --%>
   
 </body>
 </html>
