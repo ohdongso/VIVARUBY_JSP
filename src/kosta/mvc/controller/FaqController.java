@@ -67,7 +67,7 @@ public class FaqController implements Controller {
 	}
 	
 	/**
-	 * FAQ등록
+	 * FAQ 등록
 	 * */
 	public ModelAndView insertFaq(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String fTitle = request.getParameter("title");
@@ -90,9 +90,38 @@ public class FaqController implements Controller {
 	 * */
 	public ModelAndView updateFaq(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int fCode = Integer.parseInt(request.getParameter("fCode"));
-		System.out.println(fCode);
+		String fTitle = request.getParameter("title");
+		int fCategory = Integer.parseInt(request.getParameter("category"));
+		String fContent = request.getParameter("content");
 		
-		return null;
+		FaqDTO faqDTO = new FaqDTO(fCode, fCategory, fTitle, fContent);	
+		faqService.updateFaq(faqDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		List<FaqDTO> list = faqService.selectAll();
+		request.setAttribute("faqList", list);
+		
+		mv.setViewName("v_faq/faq.jsp");
+		
+		return mv;
+	}
+	
+	/**
+	 * FAQ를 CODE로 검색하는 방법
+	 * */
+	public ModelAndView selectFaq(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int fCode = Integer.parseInt(request.getParameter("fCode"));
+		FaqDTO faqDTO = faqService.selectFaq(fCode);
+		
+		System.out.println(faqDTO);
+		
+		request.setAttribute("faqDTO", faqDTO);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("v_faq/faq_update.jsp");
+		
+		return mv;
 	}
 	
 }

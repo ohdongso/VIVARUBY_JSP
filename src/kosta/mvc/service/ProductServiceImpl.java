@@ -36,6 +36,18 @@ public class ProductServiceImpl implements ProductService {
 		
 		return productDTO;
 	}
+
+	/**
+	 * 카테고리별 제품 검색.
+	 */
+	@Override
+	public List<ProductDTO> selectProCategory(int category) throws SQLException {
+		List<ProductDTO> productList = productDAO.selectProCategory(category);
+		return productList;
+	}
+	
+	
+	
 	
 	
 }

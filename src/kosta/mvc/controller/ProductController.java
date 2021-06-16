@@ -82,13 +82,42 @@ public class ProductController implements Controller {
 		return mv;
 	}
 	
+	
+	
 	/**
-	 * index.jsp페이지, 상품검색
+	 * 카테고리별 제품 검색.
 	 */
-	public ModelAndView selectCatego(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public ModelAndView selectProCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		List<ProductDTO> productList = productService.selectProCategory(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		}
+	
+		mv.setViewName(pageName);
+		return mv;	
+		
+	} // selectProCategory메소드 끝.
 	
 	
 	

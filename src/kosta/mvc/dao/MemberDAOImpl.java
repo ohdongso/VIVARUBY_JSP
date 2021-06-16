@@ -159,10 +159,10 @@ public class MemberDAOImpl implements MemberDAO {
 	 * 회원탈퇴
 	 */
 	@Override
-	public int deleteMember(String id, String pw) throws SQLException {
+	public int deleteMember(String id) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql ="DELETE FROM MEMBER WHERE ID = ? AND PW = ?";
+		String sql ="DELETE FROM MEMBER WHERE ID = ?";
 		int result=0;
 		
 		try {
@@ -170,7 +170,6 @@ public class MemberDAOImpl implements MemberDAO {
 			ps = con.prepareStatement(sql);
 			
 			ps.setString(1, id);
-			ps.setString(2, pw);
 			
 			result = ps.executeUpdate();
 			

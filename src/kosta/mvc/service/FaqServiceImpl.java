@@ -18,7 +18,15 @@ public class FaqServiceImpl implements FaqService {
 	public List<FaqDTO> selectAll() throws SQLException {
 		return faqDAO.selectAll();
 	}
-
+	
+	/**
+	 * FAQ를 CODE로 검색하는 방법
+	 * */
+	@Override
+	public FaqDTO selectFaq(int fCode) throws SQLException {
+		return faqDAO.selectFaq(fCode);
+	}
+	
 	/**
 	 * FAQ에 게시물 등록하는 기능
 	 * */
@@ -49,4 +57,19 @@ public class FaqServiceImpl implements FaqService {
 			throw new SQLException("게시물이 삭제되지 않았습니다.");
 		}
 	}
+
+	/**
+	 * FAQ게시물 수정하는 기능
+	 * */
+	@Override
+	public void updateFaq(FaqDTO faqDTO) throws SQLException {
+		int result = faqDAO.updateFaq(faqDTO);
+		if(result == 0) {
+			throw new SQLException("게시물이 수정되지 않았습니다.");
+		}
+	}
+	
+	
+	
+	
 }

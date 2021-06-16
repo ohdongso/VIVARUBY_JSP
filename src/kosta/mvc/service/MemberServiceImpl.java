@@ -56,8 +56,8 @@ public class MemberServiceImpl implements MemberService {
 	 * 회원탈퇴
 	 */
 	@Override
-	public void deleteMember(String id, String pw) throws SQLException {
-	int result = memberDAO.deleteMember(id, pw);
+	public void deleteMember(String id) throws SQLException {
+	int result = memberDAO.deleteMember(id);
 		if(result==0)throw new SQLException("회원탈퇴 실패. 다시 시도해주세요");
 	}
 		

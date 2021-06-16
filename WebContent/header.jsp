@@ -111,22 +111,22 @@
                       aria-expanded="false" >향수</a>
                       <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCate">여성향수</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=1">여성향수</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="${path}/">남성향수</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=2">남성향수</a>
                       </li>     
                       <li class="nav-item">
-                        <a class="nav-link" href="${path}/">남녀공용</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=3">남녀공용</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="${path}/">향수공병</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=4">향수공병</a>
                       </li>
                     </ul>
                   </li>
                                           
        			  <li class="nav-item">
-                    <a class="nav-link" href="T_contact.html">선물세트</a>
+                    <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=5">선물세트</a>
                   </li>
                                           
                   <li class="nav-item submenu dropdown">
@@ -134,10 +134,10 @@
                       aria-expanded="false">스킨케어</a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="tracking.html">바디케어</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=6">바디케어</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">화장품</a>
+                        <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=7">화장품</a>
                       </li>
                     </ul>
                   </li>
@@ -171,9 +171,7 @@
                         <a class="nav-link" href="elements.html">1:1문의</a>
                       </li>
                     </ul>
-                  </li>
-                  
-                  
+                  </li>                
                 </ul>
               </div>
 
@@ -185,6 +183,7 @@
                     </a>
                   </li>
 			      
+			      <!-- 장바구니 -->
                   <li class="nav-item">
                     <a href="${path}/front?key=cart&methodName=selectAllCart" class="icons">
                       <i class="ti-shopping-cart"></i>

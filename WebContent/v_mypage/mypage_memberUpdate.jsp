@@ -1,18 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
 
-<!-- css -->
-<link rel="stylesheet" href="${path}/v_css/join.css" />
-<!-- 다음 주소 api -->
-<span id="guide" style="color:#999"></span>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="img/favicon.png" type="${path}/image/png" />
+    <title>마이페이지</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${path}/v_css/join.css" />
+    <link rel="stylesheet" href="${path}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${path}/vendors/linericon/style.css" />
+    <link rel="stylesheet" href="${path}/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="${path}/css/themify-icons.css" />
+    <link rel="stylesheet" href="${path}/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="${path}/vendors/lightbox/simpleLightbox.css" />
+    <link rel="stylesheet" href="${path}/vendors/nice-select/css/nice-select.css" />
+    <link rel="stylesheet" href="${path}/vendors/animate-css/animate.css" />
+    <link rel="stylesheet" href="${path}/vendors/jquery-ui/jquery-ui.css" />
+    <!-- main css -->
+    <link rel="stylesheet" href="${path}/css/style.css" />
+    <link rel="stylesheet" href="${path}/css/responsive.css" />
+	
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 function sample4_execDaumPostcode() {
@@ -68,6 +86,12 @@ function sample4_execDaumPostcode() {
 
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+$(function() {
+	$("#back").click(function() {
+		history.back(-1);
+	});
+});
+
 function winopen() {
 	   //회원가입시 id입력란에 아이디를 입력하지 않았을 때 
 	   if(document.join.id.value == ""){
@@ -150,26 +174,33 @@ function checkValue(){
 </script>
 </head>
 <body>
-  <!--================ Header 시작. =================-->
-  <jsp:include page="../header.jsp" />
-  <!--================ Header 끝. =================-->
+	<!--================ Header 시작. =================-->
+	<jsp:include page="../header.jsp" />
+	<!--================ 헤더 끝. =================-->
 
+	<!-- small banner -->
+	<div id="Tit_NewMembe">
+		<h1 style="color: white;">
+			<strong>마이페이지</strong>
+		</h1>
+	</div>
 	
-   <!-- S:타이틀 -->
-   <div id="Tit_NewMembe">
-      <h1>
-         <img
-            src="https://sslimage.interpark.com/_nip/Newmember/tit_memjoin.png"
-            alt="회원가입">
-      </h1>
-   </div>
-   <!-- E:타이틀 -->
-
-
-
-
-   <!-- S:입력폼 -->
-   <form action="${path}/front?key=member&methodName=memberJoin" id="join" method="post" name="join" onsubmit="return checkValue()">
+	<!-- 시작 -->
+	 <section class="cat_product_area section_gap">
+      <div class="container">
+        <div class="row flex-row-reverse"> 
+          <div class="col-lg-9">     
+            <div class="latest_product_inner">
+              <div class="row">
+               <div>
+			   <h1>
+			  		<strong>회원정보수정</strong>
+			   </h1>
+			   </div>
+			   <!--  들어가는 위치 -->
+			      <!-- S:입력폼 -->	
+			      		     
+<form action="${path}/front?key=member&methodName=memberJoin" id="join" method="post" name="join" onsubmit="return checkValue()">
    <div id="NewMemberwarp">
     <div class="NewMember">
         <!-- 필수입력사항 -->
@@ -179,29 +210,28 @@ function checkValue(){
             <div class="join_mem">
                 <div class="join_cont1">
 
-                     	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <colgroup>
                            <col width="156">
                            <col width="">
                         </colgroup>
 
-
                         <tbody>
                            <!-- 아이디 입력 칸 -->
                            <tr>
-                              <th><span class="titR">*</span> 아이디</th>
+                              <th><span class="titR">*</span> 아이디 </th>
                               <td><input type="text" id="id" name="id" placeholder="아이디를 입력하세요."
-                                 maxlength="20" class="memtxt" style="width: 338px;" onkeydown="inputIdChk()">
+                                 maxlength="20" class="memtxt" style="width: 338px;" onkeydown="inputIdChk()" value="${memberDTO.id}">
                                    <span id="idCheck" class="txtR"></span>
-                                 </td>
-                               
+                              </td>               
                            </tr>
+
 
                            <!-- 비밀번호 입력칸 -->
                            <tr>
                               <th><span class="titR">*</span> 비밀번호 입력</th>
                               <td><input type="password" class="memtxt" name="pw"
-                                 value="" maxlength="12" id="pw"
+                                 value="${memberDTO.pw}" maxlength="12" id="pw"
                                  style="width: 338px; ime-mode: disabled;"> <span
                                  class="txtR">영문, 숫자, 특수문자 조합 8~12자</span></td>
                            </tr>
@@ -210,14 +240,14 @@ function checkValue(){
                            <tr>
                               <th><span class="titR">*</span> 비밀번호 확인</th>
                               <td>
-                              <input type="password" class="memtxt" name="pwc" value="" maxlength="12"
+                              <input type="password" class="memtxt" name="pwc" value="${memberDTO.pw}" maxlength="12"
                                  style="width: 338px; ime-mode: disabled;" id="pwc"> 
                                  <span id="pwCheck" class="txtR"></span></td>
                            </tr>
                            <!-- 이름 -->
                            <tr>
                               <th><span class="titR">*</span> 이름</th>
-                              <td><input type="text" name="name" value=""
+                              <td><input type="text" name="name" value="${memberDTO.name}"
                                  class="memtxt" style="width: 338px; ime-mode: active;"
                                   maxlength="20"></td>
                            </tr>
@@ -225,13 +255,13 @@ function checkValue(){
                            <!-- 이메일 -->
                            <tr>
                            	   <th><span class="titR">*</span> 이메일</th>
-                           	   <td><input type="email" class="memtxt" name="email"></td>
+                           	   <td><input type="email" class="memtxt" name="email" value="${memberDTO.email}"></td>
                			   </tr>
                                  
                            <!-- 연락처 -->
                                  <tr>
                                     <th><span class="titR">*</span> 연락처</th>
-                                    <td><input type="text" name="phone" id="phone" value=""
+                                    <td><input type="text" name="phone" id="phone" value="${memberDTO.phone}"
                                        class="memtxt" style="width: 338px; ime-mode: active;"
                                        minlength="4" maxlength="20"></td>
                                  </tr>      
@@ -240,30 +270,23 @@ function checkValue(){
                         <tr>
                      <th><span class="titR">*</span> 주소</th>
                     <td><script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-					<input type="text" class="memtxt" id="sample4_postcode" name="address1" class="mini" placeholder="우편번호" > 
-					<input type="text" class="memtxt" id="sample4_roadAddress" name="address2" placeholder="도로명주소">
-					<input type="text" class="memtxt" id="sample4_jibunAddress" name="address3" placeholder="지번주소">
+					<input type="text" class="memtxt" id="sample4_postcode" name="address1" class="mini" placeholder="우편번호" value="${memberDTO.addr}"> 
+					<input type="text" class="memtxt" id="sample4_roadAddress" name="address2" placeholder="도로명주소" value="${memberDTO.addr}">
+					<input type="text" class="memtxt" id="sample4_jibunAddress" name="address3" placeholder="지번주소" value="${memberDTO.addr}">
 					<input type="button" class="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					싱세주소 : <input type="text" name="addr2" class="memtxt"> <p>
+					싱세주소 : <input type="text" name="addr2" class="memtxt" value="${memberDTO.addr}"> <p>
 					<div class="chbox"><input type="checkbox" class="cbox" id="default_flag" name="default_flag" value="y">
 					<label for="default_flag">기본배송지 설정</label>
 					</div>
-				</td>
-				
+				</td>			
                         </tr>
-
                         </tbody>
-
                      </table>
-
-
                   </div>
             </div>
         </div>
         <!-- // 필수입력사항 -->
-
         <!-- 필수항목동의 -->
-      
         <!-- //필수항목동의 -->
 
         
@@ -271,38 +294,69 @@ function checkValue(){
 
         <!-- 회원가입 버튼 -->
         <div class="btn_join">
-            <input type="submit" class="button" value="확인" class="submit">
-            <input type="reset" class="button" value="취소" class="cancel">
+            <input type="submit" class="button" value="수정" class="submit">
+            <input type="button" class="button" value="뒤로가기" class="cancel" id="back">
         </div>
         <!-- //회원가입 버튼 -->
 
     </div>
 </div>
-
 </form>
 <!-- E:입력폼 -->
+			   
+			   
+			   			   
+              </div>
+            </div>  
+          </div>
+		  
+		  
+		  
+          <div class="col-lg-3">
+            <div class="left_sidebar_area">       
+               <aside class="left_widgets p_filter_widgets">
+                <div class="l_w_title">
+                  <h3>마이페이지</h3>
+                </div>
+                <div class="widgets_inner">
+                  <ul class="list">
+                  	<li>
+                      <a href="${path}/front?key=member&methodName=myInform">회원정보확인</a>
+                    </li>
+                    <li>
+                      <a href="${path}/front?key=member&methodName=myInformUpdate">회원정보수정</a>
+                    </li>
+                    <li>
+                      <a href="${path}/v_mypage/mypage_memberDelete.jsp">회원탈퇴</a>
+                    </li>
+                    <li>
+                      <a href="${path}/front?key=wish&methodName=selectAllWish">관심상품목록</a>
+                    </li>
+                    <li>
+                      <a href="${path}/front?key=cart&methodName=selectAllCart">장바구니목록</a>
+                    </li>
+                    <li>
+                      <a href="${path}/front?key=faq&methodName=selectCategory&category=5">주문목록/배송조회</a>
+                    </li>               
+                  </ul>
+                </div>
+              </aside> 
+            </div>
+          </div>
+          
+          
+          
+          
+        </div>
+      </div>
+	</section>
+    
+  	<br><br><br><br><br><br>
+    <!--================ 끝. =================-->
 	
-<%-- 	<section>
-		<div style="margin:auto;text-align:center;">
-		<form action="${path}/front?key=member&methodName=memberJoin" method=post>
-			아이디 :<input type="text" name="id" id="id"><span id="idCheck"></span> <p>
-			비밀번호 : <input type="password" name="pw" id="pw"> <p>
-		    비밀번호확인 : <input type="password" name="pwc" id="pwc"> <span id="pwCheck"></span><p> 
-		    이름 : <input type="text" name="name"> <p>
-		    집주소 : <input type="text" name="addr1"> <p>
-		    
-		    휴대폰 : <input type="text" name="phone"> <p>
-		    이메일 : <input type="text" name="email"> <p>
-		    <input type="submit" value="확인">
-		    <input type="reset" value="취소">
-		    </table> 
-		</form>		
-		</div>
-	</section> --%>
 	
-	 <!--================ start footer Area  =================-->
-  <jsp:include page="../footer.jsp"/>
-  <!--================ End footer Area  =================-->
-	
+	<!--================ Header 시작. =================-->
+	  	<jsp:include page="../footer.jsp"/>
+    <!--================ 헤더 끝. =================-->
 </body>
 </html>

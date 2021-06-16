@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import kosta.mvc.dao.CouponDAO;
 import kosta.mvc.dao.CouponDAOImpl;
-import kosta.mvc.dao.MemberDAO;
-import kosta.mvc.dao.MemberDAOImpl;
 import kosta.mvc.dto.CouponDTO;
 import kosta.mvc.dto.MemberDTO;
 import kosta.mvc.service.MemberService;
@@ -20,7 +18,6 @@ public class MemberController implements Controller {
 	
 	private MemberService memberService = new MemberServiceImpl();
 	private CouponDAO couponDAO = new CouponDAOImpl();
-	private MemberDAO memberDAO = new MemberDAOImpl();
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -95,7 +92,7 @@ public class MemberController implements Controller {
 	 */
 	public ModelAndView myInform(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		HttpSession session = request.getSession();
-		
+	
 		String id = String.valueOf(session.getAttribute("loginUser"));
 		MemberDTO memberDTO = memberService.myInform(id, true);
 		
@@ -103,7 +100,24 @@ public class MemberController implements Controller {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("v_member/memberInform.jsp");
+		mv.setViewName("v_mypage/mypage_mainMemberInfo.jsp");
+		return mv;
+	}
+	
+	/**
+	 * id에 해당하는 회원 정보 수정하기
+	 * */
+	public ModelAndView myInformUpdate(HttpServletRequest request, HttpServletResponse response)throws Exception {
+		HttpSession session = request.getSession();
+	
+		String id = String.valueOf(session.getAttribute("loginUser"));
+		MemberDTO memberDTO = memberService.myInform(id, true);
+
+		request.setAttribute("memberDTO", memberDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("v_mypage/mypage_memberUpdate.jsp");
 		return mv;
 	}
 	
@@ -132,25 +146,27 @@ public class MemberController implements Controller {
 	 * 회원탈퇴
 	 */
 	public ModelAndView deleteMember(HttpServletRequest request, HttpServletResponse response)throws Exception {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		memberService.deleteMember(id, pw);
-		
-		ModelAndView mv = new ModelAndView("Main.jsp", true);
-		
 		HttpSession session = request.getSession();
-		session.invalidate();
 		
+		String id = String.valueOf(session.getAttribute("loginUser"));
+		String pwc = request.getParameter("pwc");
+		
+		MemberDTO memberDTO = memberService.myInform(id, true);
+		
+		if(memberDTO.getPw().equals(pwc)) {
+			memberService.deleteMember(id);
+			
+			session.invalidate();
+			
+			ModelAndView mv = new ModelAndView("Main.jsp", true);
+			return mv;
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main.jsp");
 		return mv;
 	}
 	
 ////////////////////////////////////////////////// 관리자.
-	
-	
-	
-	
-	
-	
-	
 	
 }

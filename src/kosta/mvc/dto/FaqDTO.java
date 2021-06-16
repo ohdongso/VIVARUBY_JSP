@@ -40,4 +40,10 @@ public class FaqDTO {
 		this.fContent = fContent;
 	}
 	
+	@Override
+	public String toString() {
+		return "FaqDTO [fCode=" + fCode + ", fCategory=" + fCategory + ", fTitle=" + fTitle + ", fContent=" + fContent
+				+ "]";
+	}
+	
 }

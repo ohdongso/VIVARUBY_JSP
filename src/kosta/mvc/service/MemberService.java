@@ -28,5 +28,5 @@ public interface MemberService {
 	/**
 	 * 회원탈퇴
 	 */
-	void deleteMember(String id, String pw)throws SQLException;
+	void deleteMember(String id)throws SQLException;
 }

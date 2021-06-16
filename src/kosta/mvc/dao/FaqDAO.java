@@ -12,6 +12,11 @@ public interface FaqDAO {
 	List<FaqDTO> selectAll() throws SQLException;
 	
 	/**
+	 * FAQ를 CODE로 검색하는 방법
+	 * */
+	FaqDTO selectFaq(int fCode) throws SQLException;
+	
+	/**
 	 * FAQ에 게시물 등록하는 기능
 	 * */
 	int insertFaq(FaqDTO faqDTO) throws SQLException;
@@ -26,4 +31,8 @@ public interface FaqDAO {
 	 * */
 	List<FaqDTO> selectCategory(int category) throws SQLException;
 	
+	/**
+	 * FAQ게시물 수정하는 기능
+	 * */
+	int updateFaq(FaqDTO faqDTO) throws SQLException;
 }

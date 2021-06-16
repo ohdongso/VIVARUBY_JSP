@@ -16,7 +16,6 @@
 		});
 	});
 
-	
 </script>
 </head>
 <body>
@@ -79,7 +78,6 @@
 		<input type="submit" value="회원정보수정">
 		<button id="delete">회원탈퇴</button>
 	 </form>
-		
-		
+			
 </body>
 </html>

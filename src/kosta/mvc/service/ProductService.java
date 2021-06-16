@@ -21,8 +21,10 @@ public interface ProductService {
 	 * */
 	ProductDTO productDetail(int productCode) throws SQLException;
 	
-
-	
+	/**
+	 * 카테고리별 제품 검색.
+	 */
+	List<ProductDTO> selectProCategory(int category) throws SQLException;
 	
 	
 }

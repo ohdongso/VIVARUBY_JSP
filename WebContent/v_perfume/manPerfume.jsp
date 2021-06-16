@@ -12,7 +12,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="img/favicon.png" type="${path}/image/png" />
-    <title>여성향수</title>
+    <title>남성향수</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${path}/v_css/join.css" />
     <link rel="stylesheet" href="${path}/css/bootstrap.css" />
@@ -46,7 +46,7 @@
 		<!-- 분홍색 배너 -->
 		<div id="Tit_NewMembe">
       		<h1 style="color: white;">
-     			<strong>여성향수</strong>
+     			<strong>남성향수</strong>
       		</h1>
     	</div>
 		

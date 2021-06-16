@@ -99,35 +99,6 @@
 		}); // 찜하기 끝.
 	}); // jQuery끝.
 // 팝업
-/* function openPopup() {
- 	alert(1);
-    var _width = '650';
-    var _height = '380';
- 
-    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
-    var _left = Math.ceil(( window.screen.width - _width )/2);
-    var _top = Math.ceil(( window.screen.height - _height )/2); 
- 
-    window.open('/url', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
- 
-}
-openPopup(); */
-
-imgslide(); //페이지가 로딩될때 함수를 실행합니다
-
-function imgslide(){
-    $val = $("#slide").attr("val"); //현재 이미지 번호를 가져옵니다
-    $mx = $("#slide").attr("mx"); //총 이미지 개수를 가져옵니다
-    
-    $("#img" + $val).hide(); //현재 이미지를 사라지게 합니다.
-	
-	if( $val == $mx ){ $val = 1; } //현재이미지가 마지막 번호라면 1번으로 되돌립니다.
-	else{ $val++; } //마지막 번호가 아니라면 카운트를 증가시켜줍니다
-	$("#img"+$val).fadeIn(1000); //변경된 번호의 이미지영역을 나타나게 합니다.괄호 안에 숫자는 페이드인 되는 시간을 나타냅니다.
-	
-	$("#slide").attr('val',$val); //변경된 이미지영역의 번호를 부여합니다.
-	setTimeout('imgslide()',3500); //1초 뒤에 다시 함수를 호출합니다.(숫자값 1000당 1초)
-}
 
 </script>
 </head>
@@ -139,11 +110,7 @@ function imgslide(){
   <!--================ 헤더 끝. =================-->
   
   <!--================Home Banner Area =================-->
-  <div id="slide"  val="1" mx="3">
-	<li id="img1"><img src="${path}/img/banner/banner1.PNG"></li>
-  	<li id="img2"><img src="${path}/img/banner/banner2.PNG"></li>
-  	<li id="img3"><img src="${path}/img/banner/banner3.PNG"></li>
-  </div>
+	<img src="${path}/img/banner/banner1.PNG">
   <!--================End Home Banner Area =================-->
   
   <!--================ new상품 =================-->
@@ -239,7 +206,7 @@ function imgslide(){
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span>BEST 상품</span> </h1>
+            <h1><span>BEST 상품</span></h1>
             <p>시선집중! 베스트상품!</p>
             <a href="#">#베스트상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
@@ -299,7 +266,7 @@ function imgslide(){
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span></span>MD'S 추천상품</h1>
+            <h1><span>MD'S 추천상품</span></h1>
             <p>MD가 자신있게 추천드리는 상품입니다.</p>
             <a href="#">#추천상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
@@ -347,7 +314,7 @@ function imgslide(){
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span>Premium Review</span></h1>
+            <h1><span>상품 Review</span></h1>
             <p>매달 추첨을 통해 베스트 후기 1분에게 적립금을 드려요!</p>
             <a href="#">#소중한 고객님 후기</a>
           </div>

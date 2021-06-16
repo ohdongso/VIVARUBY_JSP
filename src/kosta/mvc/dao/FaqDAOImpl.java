@@ -39,6 +39,36 @@ public class FaqDAOImpl implements FaqDAO {
 	}
 
 	/**
+	 * FAQ를 CODE로 검색하는 방법
+	 * */
+	@Override
+	public FaqDTO selectFaq(int fCode) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		ResultSet rs =null;
+		FaqDTO faqDTO = null;
+		String sql = "SELECT * FROM FAQ WHERE F_CODE = ?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, fCode);
+			
+			rs= ps.executeQuery();
+			
+			if(rs.next()) {
+				faqDTO = new FaqDTO(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4));
+			}
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return faqDTO;
+	}
+
+	/**
 	 * FAQ에 게시물 등록하는 기능
 	 * */
 	@Override
@@ -112,4 +142,36 @@ public class FaqDAOImpl implements FaqDAO {
 		
 		return list;
 	}
+	
+	/**
+	 * FAQ게시물 수정하는 기능
+	 * */
+	@Override
+	public int updateFaq(FaqDTO faqDTO) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		ResultSet rs =null;
+		String sql = "UPDATE FAQ SET F_CATEGORY = ?, F_TITLE = ?, F_CONTENT = ? WHERE F_CODE = ?";
+		int result = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, faqDTO.getfCategory());
+			ps.setString(2, faqDTO.getfTitle());
+			ps.setString(3, faqDTO.getfContent());
+			ps.setInt(4, faqDTO.getfCode());
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;
+	}
+	
+	
+	
 }

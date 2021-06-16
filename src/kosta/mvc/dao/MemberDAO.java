@@ -33,5 +33,5 @@ public interface MemberDAO {
 	/**
 	 * 회원탈퇴
 	 */
-	int deleteMember(String id, String pw)throws SQLException;
+	int deleteMember(String id)throws SQLException;
 }

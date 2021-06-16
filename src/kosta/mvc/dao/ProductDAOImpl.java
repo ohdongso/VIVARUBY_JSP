@@ -99,8 +99,39 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return productDTO;
 	}
-	
-	
+
+	/**
+	 * 카테고리별 제품 검색.
+	 */
+	@Override
+	public List<ProductDTO> selectProCategory(int category) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ProductDTO productDTO = null;
+		List<ProductDTO> list = new ArrayList<>();
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = ? ORDER BY PRODUCT_CODE DESC";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, category);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				productDTO = new ProductDTO(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), 
+					    rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12));
+			
+				list.add(productDTO);
+			}
+			
+		} finally {
+			DbUtil.dbClose(rs, ps, con);
+		}
+		
+		return list;
+	}
 	
 	
 	
