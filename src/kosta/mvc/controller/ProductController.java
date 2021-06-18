@@ -82,8 +82,6 @@ public class ProductController implements Controller {
 		return mv;
 	}
 	
-	
-	
 	/**
 	 * 카테고리별 제품 검색.
 	 */
@@ -112,6 +110,18 @@ public class ProductController implements Controller {
 		case 4:
 			pageName = "v_perfume/perfumeBottle.jsp";
 			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
 		}
 	
 		mv.setViewName(pageName);
@@ -119,7 +129,337 @@ public class ProductController implements Controller {
 		
 	} // selectProCategory메소드 끝.
 	
+	/**
+	 * 상품용량검색
+	 * */
+	public ModelAndView selectProductCapacity(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		int min = Integer.parseInt(request.getParameter("min"));
+		int max = Integer.parseInt(request.getParameter("max"));
+		
+		List<ProductDTO> productList = productService.selectProductCapacity(category, min, max);
+	
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
+	
+	/**
+	 * 최신상품검색
+	 * */
+	public ModelAndView selectNewProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		
+		List<ProductDTO> productList = productService.selectNewProduct(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
+	
+	/**
+	 * 상품명검색
+	 * */
+	public ModelAndView selectProductName(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		
+		List<ProductDTO> productList = productService.selectProductName(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
+	
+	/**
+	 * 상품명인기순 검색
+	 * */
+	public ModelAndView selectQtySell(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		
+		List<ProductDTO> productList = productService.selectProCategory(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
+	
+	/**
+	 * 낮은가격 상품검색
+	 * */
+	public ModelAndView selectMinPrice(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		
+		List<ProductDTO> productList = productService.selectMinPrice(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
 	
 	
+	/**
+	 * 높은가격 상품검색
+	 * */
+	public ModelAndView selectMaxPrice(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		
+		List<ProductDTO> productList = productService.selectMaxPrice(category);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
+	
+	/**
+	 * 상품명 검색
+	 * */
+	public ModelAndView selectProName(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int category = Integer.parseInt(request.getParameter("category"));
+		String productName = request.getParameter("productName");
+		
+		List<ProductDTO> productList = productService.selectProName(category, productName);
+		
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		String pageName = "";
+		
+		switch (category) {
+		case 1:
+			pageName = "v_perfume/womanPerfume.jsp";
+			break;
+			
+		case 2:
+			pageName = "v_perfume/manPerfume.jsp";
+			break;
+			
+		case 3:
+			pageName = "v_perfume/mvPerfume.jsp";
+			break;
+		
+		case 4:
+			pageName = "v_perfume/perfumeBottle.jsp";
+			break;
+		
+		case 5:
+			pageName = "v_perfume/giftSet.jsp";
+			break;
+		
+		case 6:
+			pageName = "v_skinCare/bodyCare.jsp";
+			break;
+			
+		case 7:
+			pageName = "v_skinCare/cosmetics.jsp";
+			break;
+		}
+		
+		mv.setViewName(pageName);
+		return mv;
+	}
 	
 }

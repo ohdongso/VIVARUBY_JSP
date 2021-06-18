@@ -104,7 +104,7 @@
 </head>
 
 <body>
-
+  	
   <!--================ Header 시작. =================-->
   <jsp:include page="header.jsp"/>
   <!--================ 헤더 끝. =================-->
@@ -187,7 +187,7 @@
 		<div class="jb-wrap">
 			<div class="jb-image"><img src="${path}/img/banner/man.jpg" alt=""></div>
 			<div class="jb-text">
-				<h1 class="text-uppercase mb-40">all man's collection</h1>
+				<h1 class="text-uppercase mb-40">all product's collection</h1>
             	<h2 class="text-uppercase">20% off</h2>
             	<a href="${path}" class="main_btn mb-20 mt-5">바로가기</a>
             	<p>Limited Time Offer</p>

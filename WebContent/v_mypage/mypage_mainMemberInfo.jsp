@@ -137,14 +137,11 @@
             </div>
         </div>
         
-      <!-- // 160926 수정 -->
-
         <!-- 회원가입 버튼 -->
         <div class="btn_join">
             <input type="submit" class="button" value="수정" class="submit">
             <input type="button" class="button" value="회원탈퇴" class="cancel" id="delete">
         </div> 
-
 
     </div>
 </div>
@@ -156,7 +153,7 @@
           </div>
 		  
 		  
-		  
+		
           <div class="col-lg-3">
             <div class="left_sidebar_area">       
                <aside class="left_widgets p_filter_widgets">
