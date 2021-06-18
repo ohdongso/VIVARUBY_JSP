@@ -126,13 +126,13 @@
                       />
                       
                       <div class="p_icon">
-                        <a href="#">
+                        <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                           <i class="ti-eye"></i>
                         </a>
-                        <a href="#">
+                        <a href="javascript:aa(${productDTO.productCode})">
                           <i class="ti-heart"></i>
                         </a>
-                        <a href="#">
+                        <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                           <i class="ti-shopping-cart"></i>
                         </a>
                       </div>
@@ -141,7 +141,7 @@
                       <a href="#" class="d-block">
                         <h4><strong>${productDTO.productName}</strong></h4><p>
                          <h4>용량 : ${productDTO.productCapacity}ml</h4>
-                         <h4>구매횟수 : ♥${productDTO.productSell}번♥</h4>
+                         <h4 style="color: red" >구매횟수 : ♥${productDTO.productSell}번♥</h4>
                       </a>
                       <div class="mt-3">
                         <del><fmt:formatNumber value="${productDTO.productPrice * 1.2}"/>원</del> →

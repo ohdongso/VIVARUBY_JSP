@@ -29,11 +29,9 @@ public class CartServiceImpl implements CartService {
 		if(result == 0) {
 			throw new SQLException("장바구니에 등록되지 않았습니다.");
 		} else {
-			int result1 = wishDAO.deleteWish(cartDTO.getProductCode());
-			if(result1 == 0) {
-				throw new SQLException("관심상품에서 삭제되지 않았습니다.");
-			}
+			wishDAO.deleteWish(cartDTO.getProductCode());
 		}
+		
 	}
 	
 	/**

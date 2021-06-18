@@ -47,15 +47,41 @@
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		insertCart = function() {
+	/* 	insertCart = function() {
 			if(confirm("장바구니에 추가 하시겠습니까?")){
-				var qty = $("#sst").val();
+				var qty = $("#sst + '${productDTO.productCode}'").val();
 				var productCode = $(".main_btn").attr("id");
 				location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
 			} else {
 				return;
 			}		
-		}
+		} */
+		
+		// up
+		$("[name=upIn]").click(function(){
+			//alert("증가 ")
+			var no = Number($(this).prev().val()) + 1;
+			
+			$(this).prev().val(no);		
+		})
+		
+		// down
+		$("[name=downOut]").click(function(){
+			//alert("감소 ")
+			var no = Number($(this).prev().prev().val()) - 1;
+			
+			$(this).prev().prev().val(no);	
+		})
+		
+		//장바구니 담기
+		$("[name=cartTest]").click(function(){
+			productCode = $(this).attr("id");
+			qty = $("[name=qty]").val();
+			
+			location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
+		});
+		
+		
 	});
 </script>
 	
@@ -122,12 +148,11 @@
                   <!-- 수량 -->
                   <td>
 
-                   <div class="product_count">
-                   
+                    <div class="product_count">
                    		<input
                         type="text"
                         name="qty"
-                        id="sst"
+                        id="${productDTO.productCode}"
                         maxlength="12"
                         value="1"
                         title="Quantity:"
@@ -135,8 +160,8 @@
                       />
                       
                       <!-- up -->
-                      <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                      <%-- <button
+                        onclick="var result = document.getElementById('sst${productDTO.productCode}'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                         class="increase items-count"
                         type="button"
                       >
@@ -146,33 +171,39 @@
                       
                       <!-- down -->
                       <button
-                        onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                        onclick="var result = document.getElementById('sst + ${productDTO.productCode}'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                         class="reduced items-count"
                         type="button"
                       >
                         <i class="lnr lnr-chevron-down"></i>
+                      </button> --%>
+                    <!-- ------------------------------------------------ -->
+                    
+                   <button class="increase items-count" type="button" name="upIn">          
+                        <i class="lnr lnr-chevron-up"></i>
+                   </button>
+                      
+                      
+                      <!-- down -->
+                      <button class="reduced items-count" type="button" name="downOut">
+                        <i class="lnr lnr-chevron-down"></i>
                       </button>
-                   
+                    
+                    <!-- ------------------------------ -->
                    </div>
-
                    
                   </td>
                   
                   <!-- 장바구니 담기 -->
                   <td>
-                  	<a class="main_btn" href="#" onclick="insertCart()" id="${productDTO.productCode}">장바구니</a><br>
+                  	<a class="main_btn" href="#" id="${productDTO.productCode}" name="cartTest">장바구니</a><br>
                   	<a class="main_btn" href="${path}/front?key=wish&methodName=deleteWish&productCode=${productDTO.productCode}">삭제</a>	    
                   </td>
-                  
-                </tr>
-                    
-              </tbody>
-          		
+                                   
+                </tr>  
+              </tbody>  		
               </c:forEach>
-            	
-            	
-              
-              
+                 
             </table>  
           </div>
         </div>

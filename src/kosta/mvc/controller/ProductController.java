@@ -28,37 +28,49 @@ public class ProductController implements Controller {
 	 */
 	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		// 새상품
+		// 최신 등록된, 카테고리1번에 해당하는 상품을 검색해서 리스트에 담는다.
 		List<ProductDTO> productList1 = productService.selectAll();
+		
+		// 새로운 상품을 담기위한 리스트.
 		List<ProductDTO> productNew = new ArrayList<>();
 		ProductDTO newDTO = new ProductDTO();
 		
+		// 새로운 상품1개를 담기위한 DTO
 		newDTO = productList1.get(0);
-		// System.out.println("newDTO : " + newDTO);
 		
+		// 새로운 상품4개를 담기위한 리스트
 		for(int i = 1; i <= 4; i++) {
 			productNew.add(productList1.get(i));
 		}
-		// System.out.println("productNew.size() : " + productNew.size());
+		// newDTO, productNew ==> 2개를 VIEW페이로 이동히켜줘야 한다.
 		
-		// 배스트 상품
+		
+		// 구매 횟수가 많은, 삼품을 검색해서, 리스트에 담는다.
 		List<ProductDTO> productList2 = productService.selectMaxPrice();
+		
+		// Top3개를 정해서 다시 리스트에 담아줘야한다.
 		List<ProductDTO> productBest = new ArrayList<>();
 		for(int i = 0; i <=2; i++) {
 			productBest.add(productList2.get(i));
 		}
-		// System.out.println("productBest.size() : " + productBest.size());
-		
+	
 		// 관심 상품
+		// 이미 구매횟수에 대한 리스트가 있기떄문에, 전체 들고올 필요가 없다.
 		List<ProductDTO> productLike = new ArrayList<>();
 		for(int i = 0; i <= 11; i++) {
 			productLike.add(productList2.get(i));
 		}
-		// System.out.println("productLike.size() : " + productLike.size());
 		
+		// 최신상품 top1
 		request.setAttribute("newDTO", newDTO);
+		
+		// 최신상품 top2~5
 		request.setAttribute("productNew", productNew);
+		
+		// 인기순 top1~3
 		request.setAttribute("productBest", productBest);
+		
+		// 인기순 top1~12
 		request.setAttribute("productLike", productLike);
 		
 		ModelAndView mv = new ModelAndView();

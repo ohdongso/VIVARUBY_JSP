@@ -12,7 +12,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="img/favicon.png" type="image/png" />
-    <title>Eiser ecommerce</title>
+    <title>상품상세페이지</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="vendors/linericon/style.css" />
@@ -29,12 +29,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript">	
 	$(function() {
 
 		// 찜하기.
 		$("[name=wish]").click(function() {
 			var session = "${sessionScope.loginUser}";
+			
 			if(session == "") {
 				alert("로그인하고 서비스를 이용해 주세요.");
 				return;
@@ -60,7 +61,33 @@
 					alert(err + "발생했습니다.");
 				}
 			}); // ajax끝.
+			
 		}); // 찜하기 끝.
+		
+		
+		// up
+		$("[name=upIn]").click(function(){
+			var no = Number($(this).prev().val()) + 1;
+			
+			$(this).prev().val(no);		
+		});
+		
+		// down
+		$("[name=downOut]").click(function(){
+			var no = Number($(this).prev().prev().val()) - 1;
+			
+			$(this).prev().prev().val(no);	
+		});
+		
+		//장바구니 담기
+		$("[name=cartTest]").click(function(){
+			productCode = $(this).attr("id");
+			qty = $("[name=qty]").val();
+			
+			location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
+		});
+		
+		
 		
 		
 	}); // jQuery끝.
@@ -69,7 +96,7 @@
 </script>
 </head>
 <body>
-	
+
   <!--================ Header 시작. =================-->
   <jsp:include page="../header.jsp"/>
   <!--================ 헤더 끝. =================-->
@@ -88,39 +115,85 @@
                 
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-             	   <img
-                      class="d-block w-100"
+                    <c:if test="${productDTO.productCategory == 1}">
+                            	   <img
+                      class="d-block w-100"          
                       src="${path}/v_img/womanPerfume/${productDTO.productImg}"
                       alt="First slide"
-                   />            
+                   />   
+                    </c:if>
+                    
+                  	<c:if test="${productDTO.productCategory == 2}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/manPerfume/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>
+                  	
+                  	<c:if test="${productDTO.productCategory == 3}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/mvPerfume/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>
+                  	
+                  	<c:if test="${productDTO.productCategory == 4}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/perfumeBottle/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>
+                  	
+                  	<c:if test="${productDTO.productCategory == 5}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/giftSet/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>
+                  	
+                  	<c:if test="${productDTO.productCategory == 6}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/bodyCare/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>
+                  	
+                  	<c:if test="${productDTO.productCategory == 7}">
+                  	        	   <img
+                      class="d-block w-100"          
+                      src="${path}/v_img/cosmetics/${productDTO.productImg}"
+                      alt="First slide"
+                   />   
+                  	</c:if>  
+           
                 </div>
-                <div class="carousel-item">
-             	<img
-                      class="d-block w-100"
-                      src="${path}/v_img/womanPerfume/${productDTO.productImg}"
-                      alt="Second slide"
-                  />            
-                </div>
-                <div class="carousel-item">
-             	   <img
-                      class="d-block w-100"
-                      src="${path}/v_img/womanPerfume/${productDTO.productImg}"
-                      alt="Third slide"
-                   />            
-                </div>
-		
+  		
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-5 offset-lg-1">
             <div class="s_product_text">
-              <h3>${productDTO.productName}</h3> <hr>
-              <h2><fmt:formatNumber value="${productDTO.productPrice}" />원</h2> <hr>
+              <h3>상품명 : ${productDTO.productName}</h3> <hr>
+              <h2>가격 : <fmt:formatNumber value="${productDTO.productPrice}" />원</h2> <hr>
               <ul class="list">
                 <li>
                   <a href="#">
-                    <span>Category</span> : Household
+                  
+                  	<span>카테고리</span>
+                  	<c:if test="${productDTO.productCategory == 1}"> : 여성향수</c:if>
+                  	<c:if test="${productDTO.productCategory == 2}"> : 남성향수</c:if>
+                  	<c:if test="${productDTO.productCategory == 3}"> : 남녀공용향수</c:if>
+                  	<c:if test="${productDTO.productCategory == 4}"> : 향수공병</c:if>
+                  	<c:if test="${productDTO.productCategory == 5}"> : 선물세트</c:if>
+                  	<c:if test="${productDTO.productCategory == 6}"> : 바디케어</c:if>
+                  	<c:if test="${productDTO.productCategory == 7}"> : 화장품</c:if>           
+      
                   </a>
                 </li>
                 <li>
@@ -129,7 +202,7 @@
               </ul>
               
               <p> 
-                 ${productDTO.productContent}
+                 상품내용 : ${productDTO.productContent}
               </p>
               
               <hr>
@@ -143,31 +216,32 @@
                   value="1"
                   title="Quantity:"
                   class="input-text qty"
-                />
-                <button
-                  onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                  class="increase items-count"
-                  type="button"
-                >
-                  <i class="lnr lnr-chevron-up"></i>
-                </button>
-                <button
-                  onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                  class="reduced items-count"
-                  type="button"
-                >
-                  <i class="lnr lnr-chevron-down"></i>
-                </button>
+              />
+                           
+ 		<button class="increase items-count" type="button" name="upIn">          
+                 <i class="lnr lnr-chevron-up"></i>
+        </button>
+
+		<button class="reduced items-count" type="button" name="downOut">
+                 <i class="lnr lnr-chevron-down"></i>
+        </button>
+        
               </div>
-              <div class="card_area">
-                <a class="main_btn" href="#">Add to Cart</a>
-                <a class="icon_btn" href="#">
-                  <i class="lnr lnr lnr-diamond"></i>
+              
+              	<div class="card_area">
+              	<!-- 바로구매하기, 결제하기 -->
+              	<a class="main_btn" href="#" name="cartTest" id="${productDTO.productCode}">
+                바로구매
                 </a>
-         
+              	
+                <!-- 장바구니에 바로 상품추가 -->
+                <a class="main_btn" href="#" name="cartTest" id="${productDTO.productCode}">
+                장바구니
+                </a>
+         		     
                 <!-- 찜하기 -->       
-                <a class="icon_btn" href="#">
-                  <i class="lnr lnr lnr-heart" name="wish" id="${productDTO.productCode}"></i>
+                <a class="icon_btn" href="#"  >
+                <i class="lnr lnr lnr-heart" name="wish" id="${productDTO.productCode}"></i>
                 </a>
                         
               </div>

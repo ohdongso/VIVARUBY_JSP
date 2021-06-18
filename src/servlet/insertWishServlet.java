@@ -37,7 +37,4 @@ public class insertWishServlet extends HttpServlet {
 			out.println(result);
 		}
 	}
-	
-	
-	
 }

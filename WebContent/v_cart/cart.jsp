@@ -126,7 +126,11 @@
                   
                   <!-- 장바구니 담기 -->
                   <td>
-                  	<a class="main_btn" href="#" onclick="" id="${productDTO.productCode}">주문하기</a><br>
+                  	
+                  	<!-- 주문하기 -->
+                  	<a class="main_btn" href="${path}/front?key=order&methodName=oneOrder&productCode=${productDTO.productCode}">주문하기</a><br>
+                  	
+                  	<!-- 장바구니 상품삭제 -->
                   	<a class="main_btn" id="delete" href="${path}/front?key=cart&methodName=deleteCart&productCode=${productDTO.productCode}">삭제</a>	    
                   </td>
                   
@@ -134,26 +138,21 @@
                 </tbody>                
               </c:forEach>
               
-              
-           
-             
+                      
               </tbody>
             </table>  
           </div>
         </div>
+        
        <!-- 장바구니 2번째 시작부분. -->
-       <hr>
-	        
-       		<h3 style="margin-left : 72%">총 합계 : <fmt:formatNumber value="${totalAllPrice}" />원 </h3>
-  		    
+       <hr>	        
+       		<h3 style="margin-left : 72%">총 합계 : <fmt:formatNumber value="${totalAllPrice}" />원 </h3>    
        <hr>
          
     		<a class="main_btn" href="#" style="margin-left: 75%">전체주문하기</a>
   
       </div>
     </section>
-    
-
     <!--================End Cart Area =================-->
               
               

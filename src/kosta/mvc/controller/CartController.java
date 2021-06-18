@@ -67,7 +67,7 @@ public class CartController implements Controller{
 	}
 	
 	/**
-	 * 장바구니에 등록하는 기능.
+	 * 장바구니에 등록하는 기능.(찜목록에서 추가)
 	 * */
 	public ModelAndView insertCart(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int productCode = Integer.parseInt(request.getParameter("productCode"));
@@ -91,6 +91,35 @@ public class CartController implements Controller{
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("v_wish/wish.jsp");
+		
+		return mv;
+	}
+	
+	/**
+	 * 장바구니에 등록하는 기능.(상세보기페이지에서 추가)
+	 * */
+	public ModelAndView insertCartDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int productCode = Integer.parseInt(request.getParameter("productCode"));
+		int cartQty = Integer.parseInt(request.getParameter("qty"));
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("loginUser");
+		
+		CartDTO cartDTO = new CartDTO(0, id, productCode, cartQty);
+		
+		cartService.insertCart(cartDTO);
+		
+		List<WishDTO> wishDTOList = wishService.selectAllWish(id);
+		List<ProductDTO> productList = new ArrayList<>();
+		for(int i = 0; i < wishDTOList.size(); i++) {
+			productList.add(productDao.productDetail(wishDTOList.get(i).getProductCode())); 
+		}
+		
+		request.setAttribute("wishDTOList", wishDTOList);
+		request.setAttribute("productList", productList);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main.jsp");
 		
 		return mv;
 	}
@@ -132,12 +161,5 @@ public class CartController implements Controller{
 		
 		return mv;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }

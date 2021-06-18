@@ -60,7 +60,36 @@
     <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
 
+	function aa(idV){
+		
+		// 찜하기.
+		var session = "${sessionScope.loginUser}";
+		if(session == "") {
+			alert("로그인하고 서비스를 이용해 주세요.");
+			return;
+		}
+		
+		var urlAddr = "${path}/insertWish";
 
+		$.ajax({
+			url : urlAddr, 
+			type : "post", 
+			dataType : "text", 
+			data: {id:"${sessionScope.loginUser}", productCode:idV},
+			success : function(result) {
+				
+				if(result == 0) {
+					alert("이미 관심 상품에 등록 되었습니다.");
+				} else {
+					alert("관심 상품에 등록 되었습니다.");
+				}
+				
+			},
+			error: function(err) {
+				alert(err + "발생했습니다.");
+			}
+		});
+	
 	</script>
 	</head>
 	<body>
@@ -126,13 +155,13 @@
                       />
                       
                       <div class="p_icon">
-                        <a href="#">
+                        <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                           <i class="ti-eye"></i>
                         </a>
-                        <a href="#">
+                        <a href="javascript:aa(${productDTO.productCode})">
                           <i class="ti-heart"></i>
                         </a>
-                        <a href="#">
+                        <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                           <i class="ti-shopping-cart"></i>
                         </a>
                       </div>
@@ -141,7 +170,7 @@
                       <a href="#" class="d-block">
                         <h4><strong>${productDTO.productName}</strong></h4><p>
                          <h4>용량 : ${productDTO.productCapacity}ml</h4>
-                         <h4>구매횟수 : ♥${productDTO.productSell}번♥</h4>
+                         <h4 style="color: red">구매횟수 : ♥${productDTO.productSell}번♥</h4>
                       </a>
                       <div class="mt-3">
                         <del><fmt:formatNumber value="${productDTO.productPrice * 1.2}"/>원</del> →

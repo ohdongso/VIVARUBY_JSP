@@ -67,10 +67,10 @@
 </style>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		// commit확인
-		// 찜하기.
-		$("[name=wish]").click(function() {
+	
+	 function aa(idV){
+		
+			// 찜하기.
 			var session = "${sessionScope.loginUser}";
 			if(session == "") {
 				alert("로그인하고 서비스를 이용해 주세요.");
@@ -80,10 +80,10 @@
 			var urlAddr = "${path}/insertWish";
 
 			$.ajax({
-				url : urlAddr, // 서버요청주소
-				type : "post", // method방식 = 전송방식(get, post, put, delete)
-				dataType : "text", // 서버가 응답해주는 데이터의 타입(html, text, json 중의 한개), 기본 text
-				data: {id:"${sessionScope.loginUser}", productCode:$(this).attr("id")}, // 폼전송 : 서버에게 보낼 parameter 정보, 전체를 전달
+				url : urlAddr, 
+				type : "post", 
+				dataType : "text", 
+				data: {id:"${sessionScope.loginUser}", productCode:idV},
 				success : function(result) {
 					
 					if(result == 0) {
@@ -91,15 +91,16 @@
 					} else {
 						alert("관심 상품에 등록 되었습니다.");
 					}
+					
 				},
 				error: function(err) {
 					alert(err + "발생했습니다.");
 				}
-			}); // ajax끝.
-		}); // 찜하기 끝.
-	}); // jQuery끝.
-// 팝업
+			});
+			
+	   } // aa() 메소드 끝.
 
+// 팝업
 </script>
 </head>
 
@@ -119,16 +120,18 @@
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-             <h1><span>NEW 상품</span></h1>
+            <h1><span>♥NEW 상품♥</span></h1>
             <p>이제 막 갓 나온 따끈 따끈한 신제품입니다.</p>
             <a href="#">#완전 핫 신상</a> <a href="#">#지금금방</a> <a href="#">#뽑았어요</a>
           </div>
         </div>
       </div>
       
+      <!-- 새상품, top1 -->
       <div class="row">
          <div class="col-lg-6">
           <div class="new_product">
+            <h1 style="color: gray ;"><strong>New Top.1</strong></h1>
             <h5 class="text-uppercase">${newDTO.productName}</h5>
             <h3 class="text-uppercase">${newDTO.productContent}</h3>
             <div class="product-img">
@@ -137,7 +140,7 @@
             <h4><fmt:formatNumber value="${newDTO.productPrice}"/>원</h4>
             <a href="${path}/front?key=product&methodName=productDetail&productCode=${newDTO.productCode}" class="main_btn">바로가기</a>
           </div>
-        </div>
+         </div>
 	
 	    	<div class="col-lg-6 mt-5 mt-lg-0">
           	<div class="row">
@@ -151,69 +154,70 @@
                     <a href="${path}/front?key=product&methodName=productDetail&productCode=${newDTO.productCode}">
                       <i class="ti-eye"></i>
                     </a>
-                    <a href="#">
-                      <i class="ti-heart" name="wish" id="${newDTO.productCode}"></i>
+                    <a href="javascript:aa(${newDTO.productCode})">
+                      <i class="ti-heart"></i>
                     </a>
-                    <a href="#">
+                    <a href="${path}/front?key=product&methodName=productDetail&productCode=${newDTO.productCode}">
                       <i class="ti-shopping-cart"></i>
                     </a>
                   </div>
                 </div>
                 <div class="product-btm">
                   <a href="#" class="d-block">
-                    <h4>Nike latest sneaker</h4>
+                  <h4><strong>${newDTO.productName}</strong></h4><p>
+                  <h4>용량 : ${newDTO.productCapacity}ml</h4>
+                  <h4 style="color: red">구매횟수 : ♥${newDTO.productSell}번♥</h4>
                   </a>
                   <div class="mt-3">
-                    <span class="mr-4"><fmt:formatNumber value="${newDTO.productPrice}"/>원</span>
-                    <del><fmt:formatNumber value="${newDTO.productPrice}"/>원</del>
+                   	<del><fmt:formatNumber value="${newDTO.productPrice * 1.2}"/>원</del> → 
+                    <span class="mr-4"><fmt:formatNumber value="${newDTO.productPrice}"/>원</span>               
                   </div>
                 </div>
               </div>
             </div>
-            </c:forEach>
-                       
+            </c:forEach>                   
           </div>
-        </div>
-         
+        </div>     
       </div>
+      
+      
     </div>
   </section>
   <!--================ new제품 끝. =================-->
   
-    <!--================ Offer Area =================-->
-
-<%--     <img alt="" src="${path}/img/banner/man.jpg" style="width: 100%; height: 50%; align-items: center;"> --%>
   
+  
+  
+  
+  		<!-- 중간배너 시작. -->
 		<div class="jb-wrap">
 			<div class="jb-image"><img src="${path}/img/banner/man.jpg" alt=""></div>
 			<div class="jb-text">
 				<h1 class="text-uppercase mb-40">all product's collection</h1>
             	<h2 class="text-uppercase">20% off</h2>
-            	<a href="${path}" class="main_btn mb-20 mt-5">바로가기</a>
+            	<a href="${path}/front?key=product&methodName=selectProCategory&category=1" class="main_btn mb-20 mt-5">바로가기</a>
             	<p>Limited Time Offer</p>
 			</div>
 		</div>
-           
+		<br><br><br><br>
+        <!-- 중간배너 끝. -->   
 
 
-
-  <!--================ End Offer Area =================-->
-  
-  <br><br><br><br>
-  <!-- 베스트 상품 -->
+  <!-- 베스트 상품 시작. -->
   <section class="feature_product_area section_gap_bottom_custom">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span>BEST 상품</span></h1>
+            <h1><span>♥BEST 상품♥</span></h1>
             <p>시선집중! 베스트상품!</p>
             <a href="#">#베스트상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
         </div>
       </div>
 	  
-	  <!-- 베스트 상품 시작. -->
+	  
+	  <!--================ 베스트 상품 시작. =================-->
       <div class="row">
       <c:forEach items="${productBest}" var="productDTO" varStatus="state">      
        <!-- 베스트 상품1 -->
@@ -223,50 +227,56 @@
               <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
                
-               <!-- 상세보기 -->
-               <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
+                <!-- 상세보기 -->
+                <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-eye"></i>
                 </a>
                 
-                <!-- 찜하기 -->
-                <a href="#">
-                  <i class="ti-heart" name="wish" id="${productDTO.productCode}" ></i>
+                 <!-- 찜하기 -->
+                <a href="javascript:aa(${newDTO.productCode})">
+                	<i class="ti-heart"></i>
                 </a>
-                
+                    
                 <!-- 장바구니 담기 -->
-                <a href="#">
+                <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-shopping-cart"></i>
-                </a>
-                
+                </a>     
               </div>
             </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>${productDTO.productName}</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" />원</span>
-                <del><fmt:formatNumber value="${productDTO.productPrice}" /></del>
-              </div>
-            </div>
+            
+            
+                <div class="product-btm">
+                  <a href="#" class="d-block">
+                  <h4><strong>${productDTO.productName}</strong></h4><p>
+                  <h4>용량 : ${productDTO.productCapacity}ml</h4>
+                  <h4 style="color: red">구매횟수 : ♥${productDTO.productSell}번♥</h4>
+                  </a>
+                  <div class="mt-3">
+                   	<del><fmt:formatNumber value="${productDTO.productPrice * 1.2}"/>원</del> → 
+                    <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}"/>원</span>               
+                  </div>
+                </div>
+            
+            
           </div>
         </div>
 		</c:forEach> 
       </div>
+      
+      
     </div>
   </section>
   <!--================ 베스트 상품 끝. =================-->
 
+	
 
-
- 
   <!--================ 추천상품 =================-->
   <section class="inspired_product_area section_gap_bottom_custom">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-12">
           <div class="main_title">
-            <h1><span>MD'S 추천상품</span></h1>
+            <h1><span>♥MD'S 추천상품♥</span></h1>
             <p>MD가 자신있게 추천드리는 상품입니다.</p>
             <a href="#">#추천상품</a> <a href="#">#완전 핫 상품</a> <a href="#">#이 가격에?</a> 
           </div>
@@ -280,26 +290,36 @@
             <div class="product-img">
               <img class="img-fluid w-100" src="${path}/v_img/womanPerfume/${productDTO.productImg}" alt="" />
               <div class="p_icon">
+              
+                <!-- 제품상세보기 -->
                 <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-eye"></i>
                 </a>
-                <a href="#">
-                  <i class="ti-heart" name="wish" id="${productDTO.productCode}"></i>
+                
+                  <!-- 찜하기 -->
+                <a href="javascript:aa(${newDTO.productCode})">
+                	<i class="ti-heart"></i>
                 </a>
-                <a href="#">
+                    
+                <!-- 장바구니 담기 -->
+                <a href="${path}/front?key=product&methodName=productDetail&productCode=${productDTO.productCode}">
                   <i class="ti-shopping-cart"></i>
-                </a>
+                </a>             
               </div>
             </div>
+            
             <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>${productDTO.productName}</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}" />원</span>
-                <del><fmt:formatNumber value="${productDTO.productPrice}" />원</del>
-              </div>
-            </div>
+                  <a href="#" class="d-block">
+                  <h4><strong>${productDTO.productName}</strong></h4><p>
+                  <h4>용량 : ${productDTO.productCapacity}ml</h4>
+                  <h4 style="color: red">구매횟수 : ♥${productDTO.productSell}번♥</h4>
+                  </a>
+                  <div class="mt-3">
+                   	<del><fmt:formatNumber value="${productDTO.productPrice * 1.2}"/>원</del> → 
+                    <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}"/>원</span>               
+                  </div>
+           </div>
+                 
           </div>
         </div>
 		</c:forEach>

@@ -21,7 +21,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
 		
-		String sql = "SELECT * FROM PRODUCT ORDER BY PRODUCT_RDATE";
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = 1 ORDER BY PRODUCT_RDATE";
 		
 		try {
 			con = DbUtil.getConnection();
@@ -51,7 +51,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
 		
-		String sql = "SELECT * FROM PRODUCT ORDER BY PRODUCT_SELL DESC";
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = 1 ORDER BY PRODUCT_SELL DESC";
 		
 		try {
 			con = DbUtil.getConnection();
@@ -236,7 +236,6 @@ public class ProductDAOImpl implements ProductDAO {
 	/**
 	 * 상품명 인기순 검색
 	 * */
-	
 	@Override
 	public List<ProductDTO> selectQtySell(int category) throws SQLException {
 		Connection con = null;
