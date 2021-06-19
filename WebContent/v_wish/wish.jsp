@@ -46,16 +46,57 @@
     
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 	$(function() {
-	/* 	insertCart = function() {
-			if(confirm("장바구니에 추가 하시겠습니까?")){
-				var qty = $("#sst + '${productDTO.productCode}'").val();
-				var productCode = $(".main_btn").attr("id");
-				location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
-			} else {
-				return;
-			}		
-		} */
+//  		$("#u94").click(function() {
+//  			alert($("[name=u]").val());
+// 			alert($("#temp"+$("[name=up]").val()).val());
+// 		});
+ 		
+//  		$("#u90").click(function() {
+// 			alert($("#temp"+$("[name=u]").val()).val());
+// 		});
+		
+		// u${productDTO.productCode}
+		// 수량에 따른 동적값 할당.
+		$("#u" + $("#temp").val()).click(function() {	
+// 			alert($("#temp").val());
+			$.ajax({
+				url:"${path}/countPrice",
+				datatype:"text",
+				type:"post",
+				data:{qty:Number($("[name=qty]").val())+1,price:$("#price").val()},
+				success:function(result) {			
+					// 3자리씩 구분하는 정규표현식
+					var price = numberWithCommas(result) + "원";
+					$("#qtyPrice"+$("#temp").val()).text(price);
+				},
+				error:function(err) {
+					alert(err+"수량추가 에러");
+				}
+			});
+		});
+		
+		$("#d" + $("#temp").val()).click(function() {
+// 			alert($("#temp").val());
+			$.ajax({
+				url:"${path}/countPrice",
+				datatype:"text",
+				type:"post",
+				data:{qty:$("[name=qty]").val()-1,price:$("#price").val()},
+				success:function(result) {
+					// 3자리씩 구분하는 정규표현식
+					var price = numberWithCommas(result) + "원";
+					$("#qtyPrice"+$("#temp").val()).text(price);
+				},
+				error:function(err) {
+					alert(err+"수량추가 에러");
+				}
+			});
+		});
 		
 		// up
 		$("[name=upIn]").click(function(){
@@ -81,13 +122,12 @@
 			location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
 		});
 		
-		
 	});
 </script>
 	
 </head>
 <body>
- 	<!-- wishCode, productCode, id -->
+ <!-- wishCode, productCode, id -->
 <%-- 	${wishDTOList} / wishDTOList <br> --%>
 <%-- 	${productList} / productList --%>
 	
@@ -105,6 +145,11 @@
     <!--================Cart Area =================-->
     <section class="cart_area">
       <div class="container">
+      	
+      	<!-- 관심상품리스트 -->
+        <h2><strong>관심상품 리스트</strong></h2>
+        <hr style="border: solid 1px black;">
+      
         <div class="cart_inner">
           <div class="table-responsive">
             <table class="table">
@@ -142,7 +187,10 @@
                   
                   <!-- 상품가격 -->
                   <td>
-                    <h5><fmt:formatNumber value="${productDTO.productPrice}"/>원</h5>
+                    <h5>
+                    <div id="qtyPrice${productDTO.productCode}"></div>
+                  	
+                    </h5>
                   </td>
                   
                   <!-- 수량 -->
@@ -154,7 +202,7 @@
                         name="qty"
                         id="${productDTO.productCode}"
                         maxlength="12"
-                        value="1"
+                        value="0"
                         title="Quantity:"
                         class="input-text qty"
                       />
@@ -179,17 +227,18 @@
                       </button> --%>
                     <!-- ------------------------------------------------ -->
                     
-                   <button class="increase items-count" type="button" name="upIn">          
+                   <button class="increase items-count" type="button" name="upIn" id="u${productDTO.productCode}">          
                         <i class="lnr lnr-chevron-up"></i>
                    </button>
-                      
-                      
-                      <!-- down -->
-                      <button class="reduced items-count" type="button" name="downOut">
+                            
+                   <!-- down -->
+                   <button class="reduced items-count" type="button" name="downOut" id="d${productDTO.productCode}">
                         <i class="lnr lnr-chevron-down"></i>
-                      </button>
+                   </button>
                     
-                    <!-- ------------------------------ -->
+                   <input type="hidden" name="u" id="price" value="${productDTO.productPrice}">
+               	   <input type="hidden" name="d" id="temp" value="${productDTO.productCode}">  
+                   
                    </div>
                    
                   </td>
@@ -201,7 +250,8 @@
                   </td>
                                    
                 </tr>  
-              </tbody>  		
+              </tbody>
+              
               </c:forEach>
                  
             </table>  

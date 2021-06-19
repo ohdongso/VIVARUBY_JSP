@@ -73,6 +73,11 @@
   	<!--================Cart Area =================-->
     <section class="cart_area">
       <div class="container">
+      
+      	<!-- 장바구니 리스트 -->
+        <h2><strong>장바구니 리스트</strong></h2>
+        <hr style="border: solid 1px black;">
+        
         <div class="cart_inner">
           <div class="table-responsive">
             <table class="table">
@@ -128,7 +133,7 @@
                   <td>
                   	
                   	<!-- 주문하기 -->
-                  	<a class="main_btn" href="${path}/front?key=order&methodName=oneOrder&productCode=${productDTO.productCode}">주문하기</a><br>
+                  	<a class="main_btn" href="${path}/front?key=order&methodName=oneOrder&qty=${productDTO.cartQty}&productCode=${productDTO.productCode}">주문하기</a><br>
                   	
                   	<!-- 장바구니 상품삭제 -->
                   	<a class="main_btn" id="delete" href="${path}/front?key=cart&methodName=deleteCart&productCode=${productDTO.productCode}">삭제</a>	    
@@ -150,9 +155,11 @@
        <hr>
          
     		<a class="main_btn" href="#" style="margin-left: 75%">전체주문하기</a>
-  
+  		 
       </div>
+    
     </section>
+ 
     <!--================End Cart Area =================-->
               
               

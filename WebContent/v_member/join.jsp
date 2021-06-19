@@ -244,7 +244,7 @@ function checkValue(){
 					<input type="text" class="memtxt" id="sample4_roadAddress" name="address2" placeholder="도로명주소">
 					<input type="text" class="memtxt" id="sample4_jibunAddress" name="address3" placeholder="지번주소">
 					<input type="button" class="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					싱세주소 : <input type="text" name="addr2" class="memtxt"> <p>
+					<input type="text" name="addr2" class="memtxt" placeholder="상세주소"> <p>
 					<div class="chbox"><input type="checkbox" class="cbox" id="default_flag" name="default_flag" value="y">
 					<label for="default_flag">기본배송지 설정</label>
 					</div>
