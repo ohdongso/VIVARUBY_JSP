@@ -60,4 +60,9 @@ public interface ProductDAO {
 	 * 삼품명 검색
 	 * */
 	List<ProductDTO> selectProName(int category, String productName) throws SQLException;
+	
+	/**
+	 * 상품구매수량 증가.
+	 * */
+	void upQty(int productCode) throws SQLException;
 }

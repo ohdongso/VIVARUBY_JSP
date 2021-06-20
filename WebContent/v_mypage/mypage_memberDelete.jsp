@@ -37,17 +37,11 @@
 	
 	$(function() {
 		$("#delete").click(function() {
-			var pw = $("${}")
-			var pwc = $("#pwc").val();
-		if() {
-			
-		}
 			if(confirm("정말 탈퇴하시겠습니까??")){
 				location.href = "${path}/v_mypage/mypage_memberDelete.jsp";
 			} else {
 				return false;	
-			}
-			
+			}	
 		});
 	});
 

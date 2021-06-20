@@ -77,6 +77,11 @@ $(function() {
 	
 	<section class="cart_area">
     <div class="container">
+    
+       	<!-- 쿠폰함 -->
+        <h2><strong>쿠폰함</strong></h2>
+        <hr style="border: solid 1px black;">
+    
     <div class="cart_inner">
     <div class="table-responsive">
     <table class="table">

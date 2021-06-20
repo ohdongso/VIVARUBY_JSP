@@ -79,15 +79,21 @@
 			$(this).prev().prev().val(no);	
 		});
 		
-		//장바구니 담기
+		// 장바구니 담기
 		$("[name=cartTest]").click(function(){
 			productCode = $(this).attr("id");
 			qty = $("[name=qty]").val();
-			
-			location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
+
+			location.href="${path}/front?key=cart&methodName=insertCartDetail&qty=" + qty + "&productCode=" + productCode;
 		});
 		
-		
+		// 바로구매
+		$("[name=order]").click(function(){
+			qty = $("[name=qty]").val();
+			productCode = $(this).attr("id");
+			
+			location.href = "${path}/front?key=order&methodName=oneOrder&qty="+ qty + "&productCode=" + productCode;
+		});
 		
 		
 	}); // jQuery끝.
@@ -230,7 +236,7 @@
               
               	<div class="card_area">
               	<!-- 바로구매하기, 결제하기 -->
-              	<a class="main_btn" href="#" name="cartTest" id="${productDTO.productCode}">
+              	<a class="main_btn" href="#" name="order" id="${productDTO.productCode}">
                 바로구매
                 </a>
               	
@@ -265,7 +271,7 @@
               role="tab"
               aria-controls="home"
               aria-selected="true"
-              >Description</a
+              >설명</a
             >
           </li>
           <li class="nav-item">
@@ -277,7 +283,7 @@
               role="tab"
               aria-controls="profile"
               aria-selected="false"
-              >Specification</a
+              >사양</a
             >
           </li>
           <li class="nav-item">
@@ -289,7 +295,7 @@
               role="tab"
               aria-controls="contact"
               aria-selected="false"
-              >Comments</a
+              >내용</a
             >
           </li>
           <li class="nav-item">
@@ -301,7 +307,7 @@
               role="tab"
               aria-controls="review"
               aria-selected="false"
-              >Reviews</a
+              >리뷰</a
             >
           </li>
         </ul>
@@ -313,22 +319,7 @@
             aria-labelledby="home-tab"
           >
             <p>
-              Beryl Cook is one of Britain’s most talented and amusing artists
-              .Beryl’s pictures feature women of all shapes and sizes enjoying
-              themselves .Born between the two world wars, Beryl Cook eventually
-              left Kendrick School in Reading at the age of 15, where she went
-              to secretarial school and then into an insurance office. After
-              moving to London and then Hampton, she eventually married her next
-              door neighbour from Reading, John Cook. He was an officer in the
-              Merchant Navy and after he left the sea in 1956, they bought a pub
-              for a year before John took a job in Southern Rhodesia with a
-              motor company. Beryl bought their young son a box of watercolours,
-              and when showing him how to use it, she decided that she herself
-              quite enjoyed painting. John subsequently bought her a child’s
-              painting set for her birthday and it was with this that she
-              produced her first significant work, a half-length portrait of a
-              dark-skinned lady with a vacant expression and large drooping
-              breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
+              냄새가 너무 좋은거 같습니다. 다시한번 구매 하고 싶네요 ^^
             </p>
             <p>
               It is often frustrating to attempt to plan meals that are designed
@@ -437,7 +428,7 @@
                         />
                       </div>
                       <div class="media-body">
-                        <h4>Blake Ruiz</h4>
+                        <h4>마이클</h4>
                         <h5>12th Feb, 2017 at 05:56 pm</h5>
                         <a class="reply_btn" href="#">Reply</a>
                       </div>
@@ -458,7 +449,7 @@
                         />
                       </div>
                       <div class="media-body">
-                        <h4>Blake Ruiz</h4>
+                        <h4>존</h4>
                         <h5>12th Feb, 2017 at 05:56 pm</h5>
                         <a class="reply_btn" href="#">Reply</a>
                       </div>
@@ -572,9 +563,9 @@
                 <div class="row total_rate">
                   <div class="col-6">
                     <div class="box_total">
-                      <h5>Overall</h5>
+                      <h5>전체</h5>
                       <h4>4.0</h4>
-                      <h6>(03 Reviews)</h6>
+                      <h6>(리뷰 3개)</h6>
                     </div>
                   </div>
                   <div class="col-6">
@@ -645,7 +636,7 @@
                         />
                       </div>
                       <div class="media-body">
-                        <h4>Blake Ruiz</h4>
+                        <h4>김승진</h4>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -654,10 +645,7 @@
                       </div>
                     </div>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo
+                      냄새가 너무 좋은거 같습니다. 다시한번 구매 하고 싶네요 ^^
                     </p>
                   </div>
                   <div class="review_item">
@@ -669,7 +657,7 @@
                         />
                       </div>
                       <div class="media-body">
-                        <h4>Blake Ruiz</h4>
+                        <h4>정보근</h4>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -678,10 +666,7 @@
                       </div>
                     </div>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo
+                     기사분이 너무 친절하시네요. 많이 파세요~♥
                     </p>
                   </div>
                   <div class="review_item">
@@ -693,7 +678,7 @@
                         />
                       </div>
                       <div class="media-body">
-                        <h4>Blake Ruiz</h4>
+                        <h4>신보균</h4>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -702,18 +687,15 @@
                       </div>
                     </div>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo
+                      배송이 너무 빠르네요. 감사합니다.!!
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="review_box">
-                  <h4>Add a Review</h4>
-                  <p>Your Rating:</p>
+                  <h4>리뷰작성</h4>
+                  <p>당신의 점수는:</p>
                   <ul class="list">
                     <li>
                       <a href="#">
@@ -741,7 +723,7 @@
                       </a>
                     </li>
                   </ul>
-                  <p>Outstanding</p>
+                  <p>미정</p>
                   <form
                     class="row contact_form"
                     action="contact_process.php"
@@ -756,7 +738,7 @@
                           class="form-control"
                           id="name"
                           name="name"
-                          placeholder="Your Full name"
+                          placeholder="이름"
                         />
                       </div>
                     </div>
@@ -767,7 +749,7 @@
                           class="form-control"
                           id="email"
                           name="email"
-                          placeholder="Email Address"
+                          placeholder="이메일"
                         />
                       </div>
                     </div>
@@ -778,7 +760,7 @@
                           class="form-control"
                           id="number"
                           name="number"
-                          placeholder="Phone Number"
+                          placeholder="핸드폰"
                         />
                       </div>
                     </div>
@@ -789,7 +771,7 @@
                           name="message"
                           id="message"
                           rows="1"
-                          placeholder="Review"
+                          placeholder="내용"
                         ></textarea>
                       </div>
                     </div>
@@ -799,7 +781,7 @@
                         value="submit"
                         class="btn submit_btn"
                       >
-                        Submit Now
+                        등록
                       </button>
                     </div>
                   </form>

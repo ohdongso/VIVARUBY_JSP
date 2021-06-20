@@ -42,7 +42,7 @@ public class CouponDAOImpl implements CouponDAO{
 	 * 발급받은 쿠폰조회
 	 * */
 	@Override
-	public List<CouponDTO> selectAllCoupon(String id) throws SQLException {
+	public List<CouponDTO> selectAllCoupon(String id) {
 		Connection con =null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -62,6 +62,8 @@ public class CouponDAOImpl implements CouponDAO{
 						rs.getString(6), rs.getString(7), rs.getString(8)));
 			}
 			
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			DbUtil.dbClose(rs, ps, con);
 		}

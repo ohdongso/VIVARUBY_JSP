@@ -14,7 +14,7 @@ public interface CouponDAO {
 	/**
 	 * 발급받은 쿠폰조회
 	 * */
-	List<CouponDTO> selectAllCoupon(String id) throws SQLException;
+	List<CouponDTO> selectAllCoupon(String id);
 	
 	/**
 	 * 발급받은 쿠폰삭제

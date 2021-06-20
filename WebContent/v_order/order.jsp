@@ -53,11 +53,94 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+	
 	$(function() {
-		$("#default_flag").click(function() {
+		// 결제하기 기능
+		$("#order").click(function() {
+			
+			// 결제정보에 따라서 1번이면 무통장, 2번이면 카카오페이 결제.
+			var flag = 0;
+			if($("input:radio[id='cash1']").is(":checked")) {
+				flag = 1;
+			} else if($("input:radio[id='cash2']").is(":checked")) {
+				flag = 2;
+			} else {
+				flag = 3;
+			}
+			
+			if(flag == 3) {
+				alert("결제방법을 선택해주세요.");
+				return false;
+			}
+			
+			// 이용약관 동의 유효성 검사.
+			if($("input:checked[id='check']").is(":checked")){} 
+			else {
+				alert("이용약관에 동의해주세요.");
+				return false;
+			}
+			
+			// location.href="${path}/front?key=product&methodName=selectAll";
+			// 여기서 결제 방법에 따라서 다시 한번 나눠줘야 한다.
+			if(flag == 1) {
+				alert("선택하신 통장으로 입금해주세요. 이용해주셔서 감사합니다.");
+				location.href="${path}/front?key=order&methodName=cashOne&couponCode="+$("#couponSelect").val()
+						+"&productCode="+$("#productCode").val();     
+			} else if(flag == 2) {// name, email, phone, address, totalPrice
+				var name = $("#name").val();
+// 				alert(name);
+				
+				var email = $("#email").val();
+// 				alert(email);
+				
+				var phone = $("#phone").val();
+// 				alert(phone);
+				
+				var address = $("#address").val();
+// 				alert(address);
+				
+				var totalPrice = $("#totalPrice").val();
+// 				alert(totalPrice);
+				
+				// &name="+name+"&email="+email+"&phone="+phone+"&address="+address+"&totalPrice="+totalPrice;
+				location.href="${path}/v_payment/kakao.jsp?name="+name+"&email="+email+"&phone="+phone+"&address="+address+"&totalPrice="+totalPrice;
+			}
+
+		}); // 결제하기 끝.
+	
+		$("#couponSelect").change(function() {
+			$.ajax({
+				url:"${path}/discountPrice",
+				datatype:"json",
+				type:"post",
+				data:{couponCode:$(this).val()},
+				success:function(result) {
+// 					alert(result);
+// 					$("#discountPrice").text(result);
+				
+					$.each($.parseJSON(result), function(index, item) {
+						if(index == 0) {
+							var discountPrice = numberWithCommas(item) + "원";
+							$("#discountPrice").text(discountPrice);
+						} else if(index == 1) {
+							var totalPrice = numberWithCommas(item) + "원";
+		 					$("#resultPrice").text(totalPrice);
+		 					$("#finalPrice").text(totalPrice);
+						}		
+					});
+	
+				},
+				error:function(err) {
+					alert(err+"쿠폰적용 에러.");
+				}
+			});
 		});
-	});
+		
+
+	}); // jQuery 끝.
 
 function sample4_execDaumPostcode() {
     new daum.Postcode({
@@ -158,6 +241,7 @@ function sample4_execDaumPostcode() {
                           src="${path}/v_img/womanPerfume/${productDTO.productImg}";
                           alt=""
                         />
+                        <input type="hidden" id="productCode" value="${productDTO.productCode}">
                       </div>
                        </div>
                        </td>
@@ -218,7 +302,15 @@ function sample4_execDaumPostcode() {
                               <th><span class="titR"></span> 이름</th>
                               <td><input type="text" name="name" value="${memberDTO.name}"
                                  class="memtxt" style="width: 338px; ime-mode: active;"
-                                  maxlength="20"></td>
+                                  maxlength="20">
+                                  
+                               <input type="hidden" id="name" name="name" value="${memberDTO.name}">
+                               <input type="hidden" id="phone" name="phone" value="${memberDTO.phone}">
+                               <input type="hidden" id="address" name="address" value="${memberDTO.addr}">
+                               <input type="hidden" id="email" name="email" value="${memberDTO.email}">       
+                               <input type="hidden" id="totalPrice" name="totalPrice" value="${applicationScope.totalPrice}">
+                               
+                               </td>
                            </tr>
                            
                            <!-- 이메일 -->
@@ -369,7 +461,7 @@ function sample4_execDaumPostcode() {
     
     			  <!-- 상품금액 -->                  
                   <td>
-                   	
+                  <fmt:formatNumber value="${productDTO.totalPrice}"/>원
                   </td>
                   
                   <!-- 배송비 -->
@@ -379,17 +471,21 @@ function sample4_execDaumPostcode() {
                   
                   <!-- 할인금액 -->
                   <td>
-                  	  3
+       				 <div id="discountPrice" style="color: blue">
+       				 
+       				 </div>
                   </td>
                   
                   <!-- 추가금액 -->
                   <td>
-                  	4
+                  	0원
                   </td>
                   
                   <!-- 결제 예정금액 -->
                   <td>   	
-                  	5
+                  	  <div id="resultPrice" style="color: red;">
+                  	  
+                  	  </div>
                   </td>
                 </tr>
                 
@@ -400,11 +496,14 @@ function sample4_execDaumPostcode() {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   쿠폰 사용
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <select>
-                  	<option>선택</option>
-                  	<option>1</option>
-                  	<option>2</option>
+        
+                
+                  <select id="couponSelect" >
+                  	<option value="0">선택</option>
+                  	<option value="${couponList[0].couponCode}">${couponList[0].couponName}</option>
+                  	<option value="${couponList[1].couponCode}">${couponList[1].couponName}</option>
                   </select>
+                  
                   <input type="button" value="쿠폰적용" class="main_btn">
                   </td>
                 </tr>
@@ -422,7 +521,7 @@ function sample4_execDaumPostcode() {
      	<tr>
      		<td><h6><strong>결제방법</strong></h6></td>
      		<td>
-     			<input type="radio" name="cach">&nbsp;&nbsp;무통장입금
+     			<input type="radio" name="cach" id="cash1" value="1">&nbsp;&nbsp;무통장입금
      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      			<select>
@@ -431,7 +530,7 @@ function sample4_execDaumPostcode() {
      				<option value="2">국민은행 676901-01-197536(예금쥐황재원)</option>
      			</select>
      			<br>
-     			<input type="radio" name="cach">&nbsp;&nbsp;카카오페이
+     			<input type="radio" name="cach" id="cash2" value="2">&nbsp;&nbsp;카카오페이
      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      			
@@ -448,7 +547,7 @@ function sample4_execDaumPostcode() {
      <hr style="border: solid 1px black;">  
      <h6>
      <strong>주문동의</strong>
-     <input type="checkbox" value="" style="margin-left: 100px;">
+     <input type="checkbox" value="" id="check" style="margin-left: 100px;">
      <span style="text-decoration: underline;">상기 결제정보를 확인하였으며, 구매진행에 동의합니다.</span> 
      </h6>
      
@@ -457,29 +556,22 @@ function sample4_execDaumPostcode() {
      <!-- 최종금액 -->
      <br>
      <h2><strong>최종금액</strong></h2>
-     <hr style="border: solid 1px black;">  
-     500,000원
+     <hr style="border: solid 1px black;"> 
+      
+     <h1 style="color: red" id="finalPrice">
+
+	</h1>
      
      <hr>
      <!-- 주문하기, 주문취소버튼 -->
      <div align="center">
-     <input type="button" class="main_btn" value="주문하기">
-     <input type="button" class="main_btn" value="주문취소">
-      </div> 
+     <input type="button" id="order" class="main_btn" value="결제하기">
+     <input type="button" id="back" class="main_btn" value="뒤로가기" onclick="history.back(-1);">
+     </div> 
     </section>
     <!--================End Cart Area =================-->
-    
-
-    
    
-    
-    
-    
-    
-    
-    
-    
-
+   
     
     <!-- 장바구니 2번째 시작부분. -->
      

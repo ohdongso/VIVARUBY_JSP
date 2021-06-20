@@ -365,7 +365,27 @@ public class ProductDAOImpl implements ProductDAO {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return list;
-		
+	}
+	
+	/**
+	 * 상품구매수량 증가.
+	 * */
+	@Override
+	public void upQty(int productCode) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE PRODUCT SET PRODUCT_SELL = (PRODUCT_SELL + 1) WHERE PRODUCT_CODE = ?";
+
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, productCode);
+			
+			ps.executeUpdate();
+			
+		}finally {
+			DbUtil.dbClose(ps, con);
+		}
 	}
 	
 }

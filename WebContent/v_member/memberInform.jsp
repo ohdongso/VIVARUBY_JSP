@@ -10,10 +10,7 @@
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#delete").click(function() {
-			location.href="${path}/v_member/delete.jsp";
-			return false;
-		});
+		alert(1);
 	});
 
 </script>
@@ -21,7 +18,7 @@
 <body>
 	<h1>memberInfo.jsp</h1>
 
-	<table border="1px">
+	<table>
 		<tr>
 			<td>
 				<p>아이디</p>

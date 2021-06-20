@@ -89,7 +89,7 @@
 				alert(err + "발생했습니다.");
 			}
 		});
-	
+	}
 	</script>
 	</head>
 	<body>

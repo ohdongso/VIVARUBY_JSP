@@ -8,5 +8,6 @@ public interface OrderDAO {
 	/**
 	 * 주문페이지 이동시 하나의 제품 주문
 	 * */
-	ProductDTO oneOrder(int productCode) throws SQLException; 
+	ProductDTO oneOrder(int productCode) throws SQLException;
+	
 }

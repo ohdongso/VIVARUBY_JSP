@@ -37,10 +37,5 @@ public class OrderDAOImpl implements OrderDAO {
 			DbUtil.dbClose(rs, ps, con);
 		}
 		return productDTO;
-	}	
-	
-	
-	
-	
-	
+	}
 }

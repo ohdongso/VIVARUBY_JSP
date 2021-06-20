@@ -109,13 +109,13 @@ public class CartController implements Controller{
 		
 		cartService.insertCart(cartDTO);
 		
-		List<WishDTO> wishDTOList = wishService.selectAllWish(id);
+		List<CartDTO> cartDTOList = cartService.selectAllCart(id);
 		List<ProductDTO> productList = new ArrayList<>();
-		for(int i = 0; i < wishDTOList.size(); i++) {
-			productList.add(productDao.productDetail(wishDTOList.get(i).getProductCode())); 
+		for(int i = 0; i < cartDTOList.size(); i++) {
+			productList.add(productDao.productDetail(cartDTOList.get(i).getProductCode())); 
 		}
 		
-		request.setAttribute("wishDTOList", wishDTOList);
+		request.setAttribute("cartDTOList", cartDTOList);
 		request.setAttribute("productList", productList);
 		
 		ModelAndView mv = new ModelAndView();

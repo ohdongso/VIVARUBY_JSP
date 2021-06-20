@@ -169,10 +169,35 @@ function numberWithCommas(x) {
                   <td>
                     <div class="media">
                       <div class="d-flex">
-                        <img id="wish"
-                          src="${path}/v_img/womanPerfume/${productDTO.productImg}";
-                          alt=""
-                        />
+                      
+                      	<c:if test="${productDTO.productCategory==1}" >
+                      		<img id="wish" src="${path}/v_img/womanPerfume/${productDTO.productImg}" />
+                      	</c:if>
+                      	
+                		<c:if test="${productDTO.productCategory==2}" >
+                			<img id="wish" src="${path}/v_img/manPerfume/${productDTO.productImg}" />
+                		</c:if>
+                		
+                		<c:if test="${productDTO.productCategory==3}" >
+                			<img id="wish" src="${path}/v_img/mvPerfume/${productDTO.productImg}" />
+                		</c:if>
+                		
+                		<c:if test="${productDTO.productCategory==4}" >
+                			<img id="wish" src="${path}/v_img/perfumeBottle/${productDTO.productImg}" />
+                		</c:if>
+                		
+                		<c:if test="${productDTO.productCategory==5}" >
+                			<img id="wish" src="${path}/v_img/giftSet/${productDTO.productImg}" />
+                		</c:if>
+                		
+                		<c:if test="${productDTO.productCategory==6}" >
+                			<img id="wish" src="${path}/v_img/bodyCare/${productDTO.productImg}" />
+                		</c:if>
+                		
+                		<c:if test="${productDTO.productCategory==7}" >
+                			<img id="wish" src="${path}/v_img/cosmetics/${productDTO.productImg}" />
+                		</c:if>
+                			
                       </div>
                        </div>
                        </td>
