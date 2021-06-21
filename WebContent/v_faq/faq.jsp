@@ -38,9 +38,14 @@
 <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("[name=updateFaq]").click(function() {
-			location.href="${path}/front?key=faq&methodName=selectFaq&fCode=" + $("[name=updateFaq]").attr("id");
-		});
+// 		$("[name=updateFaq]").click(function() {
+// 			alert($("[name=fc]").val());
+// 		});
+		
+// 		$("[name=updateFaq]").click(function() {
+// 			alert($("[name=fCode]").val());
+// 			location.href="${path}/front?key=faq&methodName=selectFaq&fCode=" + $("[name=updateFaq]").attr("id");
+// 		});
 	});
 	
 </script>
@@ -102,18 +107,26 @@
 						<tr>
 						<td>${faq.fContent}</td>
 						</tr>
-			
+							
 						<c:if test="${sessionScope.loginState==0}">
 							<tr>
 							<td>
-							<div style="margin-bottom: 10px" align="right">										
-								<form action="${path}/front?key=faq&methodName=deleteFaq"
-									method="post">
+							
+							<div style="margin-bottom: 10px;">
+												
+								<form action="${path}/front?key=faq&methodName=selectFaq" method="post" style="margin-left : 77%;">					
 									<input type="hidden" name="fCode" value="${faq.fCode}">
-									<button class="main_btn" type="button" name="updateFaq" id="${faq.fCode}">수정</button>
+									<button class="main_btn" type="submit">수정</button>
+								</form>
+									
+								<form action="${path}/front?key=faq&methodName=deleteFaq" method="post" style="margin-left : 89%; margin-top: -46px;">
+									<input type="hidden" name="fCode" value="${faq.fCode}">
+<%-- 									<button class="main_btn" type="button" name="updateFaq" id="${faq.fCode}">수정</button> --%>
 									<button class="main_btn" type="submit">삭제</button>
-								</form>									
-							</div>
+								</form>	
+											
+							</div>	
+							
 							</td>				
 							</tr>
 						</c:if>

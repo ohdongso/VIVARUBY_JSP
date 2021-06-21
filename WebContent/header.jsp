@@ -122,6 +122,11 @@
                       <li class="nav-item">
                         <a class="nav-link" href="${path}/front?key=product&methodName=selectProCategory&category=4">향수공병</a>
                       </li>
+                      <c:if test="${sessionScope.loginState == 0}">
+                      <li class="nav-item">
+                      	<a class="nav-link" href="v_product/insertProduct.jsp">상품등록</a>
+                      </li>
+                      </c:if>
                     </ul>
                   </li>
                                           

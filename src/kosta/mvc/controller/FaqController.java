@@ -113,8 +113,6 @@ public class FaqController implements Controller {
 		int fCode = Integer.parseInt(request.getParameter("fCode"));
 		FaqDTO faqDTO = faqService.selectFaq(fCode);
 		
-		System.out.println(faqDTO);
-		
 		request.setAttribute("faqDTO", faqDTO);
 		
 		

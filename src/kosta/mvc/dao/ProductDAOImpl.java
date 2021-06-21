@@ -11,6 +11,64 @@ import kosta.mvc.dto.ProductDTO;
 import kosta.mvc.util.DbUtil;
 
 public class ProductDAOImpl implements ProductDAO {
+	
+	/**
+	 * 상품삭제
+	 * */
+	@Override
+	public int delete(int productCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql ="DELETE FROM PRODUCT WHERE PRODUCT_CODE = ?";
+		int result=0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, productCode);
+			
+			result = ps.executeUpdate();
+			
+		}finally {
+			DbUtil.dbClose(ps, con);
+		}
+		
+		return result;	
+	}
+	
+	/**
+	 * 상품등록
+	 * */
+	@Override
+	public int insertProduct(ProductDTO productDTO) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,?,?,?,0,?,?,?,?,?,null,default)";
+
+		int result = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, productDTO.getProductCategory());
+			ps.setInt(2, productDTO.getProductPrice());
+			ps.setInt(3, productDTO.getProductStock());
+			ps.setInt(4, productDTO.getProductGender());
+			ps.setInt(5, productDTO.getProductCapacity());
+			ps.setString(6, productDTO.getProductName());
+			ps.setString(7, productDTO.getProductContent());
+			ps.setString(8, productDTO.getProductImg());
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(ps, con);
+		}
+		return result;
+	}
+
 	/**
 	 * 전체 상품 검색
 	 * */
@@ -21,7 +79,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		List<ProductDTO> list = new ArrayList<>();
 		
-		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = 1 ORDER BY PRODUCT_RDATE";
+		String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_CATEGORY = 1 ORDER BY PRODUCT_CODE DESC";
 		
 		try {
 			con = DbUtil.getConnection();

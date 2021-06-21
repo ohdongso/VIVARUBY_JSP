@@ -59,6 +59,15 @@
     
     <script type="text/javascript" src="${path}/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
+	$(function() {
+		$("#delete").click(function() {
+			if(confirm("상품을 삭제 하시겠습니까??")){} 
+			else {
+				return false;	
+			}
+		});
+});
+
 	
 	function aa(idV){
 		
@@ -176,7 +185,16 @@
                       <div class="mt-3">
                         <del><fmt:formatNumber value="${productDTO.productPrice * 1.2}"/>원</del> →
                         <span class="mr-4"><fmt:formatNumber value="${productDTO.productPrice}"/>원</span>
-                       
+                        
+                        <c:if test="${sessionScope.loginState == 0}">
+						<div align="right">						          
+						<form action="${path}/front?key=product&methodName=productDelete" method="post">
+							<input type="hidden" name="productCode" value="${productDTO.productCode}">
+							<input type="submit" id="delete" value="삭제" class="main_btn">
+                      	</form>
+                      	</div>
+                      	</c:if>
+                        
                       </div>
                     </div>
                   </div>

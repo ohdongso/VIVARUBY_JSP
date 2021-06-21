@@ -12,6 +12,28 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO = new ProductDAOImpl();
 	
 	/**
+	 * 상품삭제
+	 * */
+	@Override
+	public void delete(int productCode) throws SQLException {
+		int result = productDAO.delete(productCode);
+		if(result == 0) {
+			throw new SQLException("상품이 삭제되지 않았습니다.");
+		}
+	}
+
+	/**
+	 * 상품등록
+	 * */
+	@Override
+	public void insertProduct(ProductDTO productDTO) throws SQLException {
+		int result = productDAO.insertProduct(productDTO);
+		if(result == 0) {
+			throw new SQLException("상품등록에 실패했습니다.");
+		}
+	}
+	
+	/**
 	 * 전체 상품 검색
 	 * */
 	@Override

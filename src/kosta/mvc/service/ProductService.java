@@ -11,6 +11,16 @@ import kosta.mvc.dto.ProductDTO;
 
 public interface ProductService {
 	/**
+	 * 상품삭제
+	 * */
+	void delete(int productCode) throws SQLException;
+	
+	/**
+	 * 상품등록
+	 * */
+	void insertProduct(ProductDTO productDTO) throws SQLException; 
+	
+	/**
 	 * 전체 상품 검색
 	 * */
 	List<ProductDTO> selectAll() throws SQLException;

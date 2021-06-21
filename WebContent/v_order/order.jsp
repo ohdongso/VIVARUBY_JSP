@@ -348,7 +348,7 @@ function sample4_execDaumPostcode() {
      <h2><strong>배송정보</strong></h2>
      <hr style="border: solid 1px black;"> 	
      
-        <!-- S:입력폼 -->
+   <!-- S:입력폼 -->
    <form action="${path}/front?key=member&methodName=memberJoin" id="join" method="post" name="join" onsubmit="return checkValue()">
    <div id="NewMemberwarp">
     <div class="NewMember">

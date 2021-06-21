@@ -8,9 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kosta.mvc.service.ProductServiceImpl;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import kosta.mvc.dto.ProductDTO;
 import kosta.mvc.service.ProductService;
+import kosta.mvc.service.ProductServiceImpl;
 
 public class ProductController implements Controller {
 
@@ -22,7 +25,50 @@ public class ProductController implements Controller {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	/**
+	 * 상품삭제
+	 * */
+	public ModelAndView productDelete(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int productCode = Integer.parseInt(request.getParameter("productCode"));
+		
+		productService.delete(productCode);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setRedirect(true);
+		mv.setViewName("Main.jsp");
+		
+		return mv;
+	}
+	
+	/**
+	 * 상품등록
+	 * */
+	public ModelAndView insertProduct(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String saveDir = request.getServletContext().getRealPath("/save");
+		String encoding="UTF-8";
+		int maxSize=1024*1024*100;
+		
+		MultipartRequest m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy()); 
+		
+		String productName = m.getParameter("productName");
+		int productPrice = Integer.parseInt(m.getParameter("productPrice"));
+		int productGender = Integer.parseInt(m.getParameter("productGender"));
+		int productCategory = Integer.parseInt(m.getParameter("productCategory"));
+		int productStock = Integer.parseInt(m.getParameter("productStock"));
+		int productCapacity = Integer.parseInt(m.getParameter("productCapacity"));
+		String productContent = m.getParameter("productContent");
+		String productImg = m.getFilesystemName("productImg");
+		
+		ProductDTO productDTO = new ProductDTO(0, productCategory, productPrice, productStock, 0, productGender, productCapacity, productName, productContent, productImg, null, null);
+		productService.insertProduct(productDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main.jsp");
+		
+		return mv;
+	}
+	
 	/**
 	 * index.jsp페이지, 상품검색
 	 */
