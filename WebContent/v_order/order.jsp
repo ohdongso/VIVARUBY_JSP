@@ -114,7 +114,7 @@ function numberWithCommas(x) {
 		$("#couponSelect").change(function() {
 			$.ajax({
 				url:"${path}/discountPrice",
-				dataType:"json",
+				datatype:"json",
 				type:"post",
 				data:{couponCode:$(this).val()},
 				success:function(result) {

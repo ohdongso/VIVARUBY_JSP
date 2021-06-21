@@ -53,7 +53,7 @@
 국민은행 676901-01-197536<br><br>
 
         회사명 : VIVARUBY / 대표 : 오동소 / 주소 : 서울시 송파구 충민로 66, 티동9층 9140호 / 전화 : 070-4322-0021 / FAX : 031-624-4904<br><br>
-        사업자등록번호 : 318-12-00340 [사업자정보확인] / 개인정보담당자 : 오동소(help@worldperfume.co.kr) / 통신판매업신고번호 : 제2020-서울송파-3452 호<br><br> 
+        사업자등록번호 : 318-12-00340 [사업자정보확인] / 개인정보담당자 : 김승진(help@worldperfume.co.kr) / 통신판매업신고번호 : 제2020-서울송파-3452 호<br><br> 
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> COPYRIGHT BY VIVARUBY ALL RIGHTS RESERVED.  <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">VIVARUBY</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 
