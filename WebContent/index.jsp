@@ -345,7 +345,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="single-blog">
             <div class="thumb">
-              <img class="img-fluid" src="img/b1.jpg" alt="">
+              <img class="img-fluid" src="${path}/v_img/womanPerfume/w1.jpg" alt="">
             </div>
             <div class="short_details">
               <div class="meta-top d-flex">
@@ -353,13 +353,11 @@
                 <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
               </div>
               <a class="d-block" href="single-blog.html">
-                <h4>Ford clever bed stops your sleeping
-                  partner hogging the whole</h4>
+                <h4>[딥티크] 딥티크 필로시코스 EDT</h4>
               </a>
               <div class="text-wrap">
                 <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
+                 	 냄새가 너무 좋은거 같습니다. 다시한번 구매 하고 싶네요 ^^
                 </p>
               </div>
               <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>
@@ -370,7 +368,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="single-blog">
             <div class="thumb">
-              <img class="img-fluid" src="img/b2.jpg" alt="">
+              <img class="img-fluid" src="${path}/v_img/womanPerfume/w10.jpg" alt="">
             </div>
             <div class="short_details">
               <div class="meta-top d-flex">
@@ -378,13 +376,11 @@
                 <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
               </div>
               <a class="d-block" href="single-blog.html">
-                <h4>Ford clever bed stops your sleeping
-                  partner hogging the whole</h4>
+                <h4>[에르메스] 에르메스 운 자르뎅 수르 라 라군 EDT</h4>
               </a>
               <div class="text-wrap">
-                <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
+                <p>             		
+              		기사분이 너무 친절하시네요. 많이 파세요~♥
                 </p>
               </div>
               <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>
@@ -395,7 +391,7 @@
         <div class="col-lg-4 col-md-6">
           <div class="single-blog">
             <div class="thumb">
-              <img class="img-fluid" src="img/b3.jpg" alt="">
+              <img class="img-fluid" src="${path}/v_img/womanPerfume/w3.jpg" alt="">
             </div>
             <div class="short_details">
               <div class="meta-top d-flex">
@@ -403,13 +399,11 @@
                 <a href="#"><i class="ti-comments-smiley"></i>2 Comments</a>
               </div>
               <a class="d-block" href="single-blog.html">
-                <h4>Ford clever bed stops your sleeping
-                  partner hogging the whole</h4>
+                <h4>[로샤스] 로샤스 걸 EDT</h4>
               </a>
               <div class="text-wrap">
-                <p>
-                  Let one fifth i bring fly to divided face for bearing the divide unto seed winged divided light
-                  Forth.
+                <p>        
+                  배송이 너무 빠르네요. 감사합니다.!!               
                 </p>
               </div>
               <a href="#" class="blog_btn">Learn More <span class="ml-2 ti-arrow-right"></span></a>

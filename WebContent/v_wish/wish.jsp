@@ -62,11 +62,11 @@ function numberWithCommas(x) {
 		
 		// u${productDTO.productCode}
 		// 수량에 따른 동적값 할당.
-		$("#u" + $("#temp").val()).click(function() {	
+		/* $("#u" + $("#temp").val()).click(function() {	
 // 			alert($("#temp").val());
 			$.ajax({
 				url:"${path}/countPrice",
-				datatype:"text",
+				dataType:"text",
 				type:"post",
 				data:{qty:Number($("[name=qty]").val())+1,price:$("#price").val()},
 				success:function(result) {			
@@ -84,7 +84,7 @@ function numberWithCommas(x) {
 // 			alert($("#temp").val());
 			$.ajax({
 				url:"${path}/countPrice",
-				datatype:"text",
+				dataType:"text",
 				type:"post",
 				data:{qty:$("[name=qty]").val()-1,price:$("#price").val()},
 				success:function(result) {
@@ -96,23 +96,35 @@ function numberWithCommas(x) {
 					alert(err+"수량추가 에러");
 				}
 			});
-		});
+		}); */
+		
 		
 		// up
 		$("[name=upIn]").click(function(){
-			//alert("증가 ")
 			var no = Number($(this).prev().val()) + 1;
-			
+
 			$(this).prev().val(no);		
-		})
+			
+			//총 가격 = 가격 * 수량
+			//alert($(this).parent().prev().find("div"))
+			
+			var tot = $(this).next().next().val()*no;
+			
+			tot = numberWithCommas(tot);
+			$(this).parent().parent().prev().find("div").text(tot);	
+		});
 		
 		// down
 		$("[name=downOut]").click(function(){
-			//alert("감소 ")
 			var no = Number($(this).prev().prev().val()) - 1;
-			
+		
 			$(this).prev().prev().val(no);	
-		})
+			
+			var tot = $(this).next().next().prev().val()*no;
+	
+			tot = numberWithCommas(tot);
+			$(this).parent().parent().prev().find("div").text(tot);	
+		});
 		
 		//장바구니 담기
 		$("[name=cartTest]").click(function(){
@@ -121,7 +133,6 @@ function numberWithCommas(x) {
 			
 			location.href="${path}/front?key=cart&methodName=insertCart&qty=" + qty + "&productCode=" + productCode;
 		});
-		
 	});
 </script>
 	

@@ -15,6 +15,7 @@
 
 <!-- This is a very simple parallax effect achieved by simple CSS 3 multiple backgrounds, made by http://twitter.com/msurguy -->
 <style type="text/css">
+
 .form-signin
 {
     max-width: 330px;
@@ -90,9 +91,11 @@
     display: block;
     margin-top: 10px;
 }
+
 </style>
 </head>
-<body>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0"
+	marginheight="0">
 	
   <!--================ Header 시작. =================-->
   <jsp:include page="../header.jsp" />
@@ -128,15 +131,6 @@
     </div>
 </div>
 <br><br><br><br><br><br><br>
-	
-
-	
-<%--  	<form action="${path}/front?key=member&methodName=loginCheck" method="post"> --%>
-<!-- 		아이디 : <input type="text" name="id"> <p> -->
-<!-- 		비밀번호 : <input type="password" name="pw"> <p> -->
-<!-- 		<input type="submit" value="로그인"> -->
-<!-- 		<button>로그아웃</button> -->
-<!-- 	</form> -->
 	
   <!--================ start footer Area  =================-->
   <jsp:include page="../footer.jsp"/>
