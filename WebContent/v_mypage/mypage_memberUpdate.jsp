@@ -122,7 +122,7 @@ function checkValue(){
          alert("연락처를 입력하세요.");
          return false;
      }
-     alert("회원가입을 축하합니다. 로그인 후 쿠폰함을 확인해주세요.^^");
+     alert("회원정보가 수정 됐습니다.");
  }
 	
 	$(function() {
@@ -200,7 +200,7 @@ function checkValue(){
 			   <!--  들어가는 위치 -->
 			      <!-- S:입력폼 -->	
 			      		     
-<form action="${path}/front?key=member&methodName=memberJoin" id="join" method="post" name="join" onsubmit="return checkValue()">
+<form action="${path}/front?key=member&methodName=updateMemberInfo" id="join" method="post" name="join" onsubmit="return checkValue()">
    <div id="NewMemberwarp">
     <div class="NewMember">
         <!-- 필수입력사항 -->
@@ -270,11 +270,11 @@ function checkValue(){
                         <tr>
                      <th><span class="titR">*</span> 주소</th>
                     <td><script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-					<input type="text" class="memtxt" id="sample4_postcode" name="address1" class="mini" placeholder="우편번호" value="${memberDTO.addr}"> 
+					<input type="text" class="memtxt" id="sample4_postcode" name="address1" class="mini" placeholder="우편번호" value=""> 
 					<input type="text" class="memtxt" id="sample4_roadAddress" name="address2" placeholder="도로명주소" value="${memberDTO.addr}">
-					<input type="text" class="memtxt" id="sample4_jibunAddress" name="address3" placeholder="지번주소" value="${memberDTO.addr}">
+					<input type="text" class="memtxt" id="sample4_jibunAddress" name="address3" placeholder="지번주소" value="">
 					<input type="button" class="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					싱세주소 : <input type="text" name="addr2" class="memtxt" value="${memberDTO.addr}"> <p>
+					싱세주소 : <input type="text" name="addr2" class="memtxt" value=""> <p>
 					<div class="chbox"><input type="checkbox" class="cbox" id="default_flag" name="default_flag" value="y">
 					<label for="default_flag">기본배송지 설정</label>
 					</div>

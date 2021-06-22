@@ -202,6 +202,9 @@
       
                   </a>
                 </li>
+                 <li>
+                  <a href="#"> <span>용량</span> : ${productDTO.productCapacity}</a>ml
+                </li>
                 <li>
                   <a href="#"> <span>남은수량</span> : ${productDTO.productStock}</a>개
                 </li>

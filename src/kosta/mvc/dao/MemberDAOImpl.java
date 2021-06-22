@@ -146,7 +146,7 @@ public class MemberDAOImpl implements MemberDAO {
 			ps.setString(3, memberDTO.getPhone());
 			ps.setString(4, memberDTO.getEmail());
 			ps.setString(5, memberDTO.getId());
-			
+			System.out.println(sql);
 			result = ps.executeUpdate();
 			
 		}finally {

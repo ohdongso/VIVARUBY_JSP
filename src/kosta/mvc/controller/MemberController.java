@@ -127,7 +127,7 @@ public class MemberController implements Controller {
 	public ModelAndView updateMemberInfo(HttpServletRequest request, HttpServletResponse response)throws Exception { 
 		String id= request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String addr = request.getParameter("addr");
+		String addr = request.getParameter("address2");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 
@@ -137,7 +137,7 @@ public class MemberController implements Controller {
 		memberDTO = memberService.myInform(id, false);
 		request.setAttribute("memberDTO", memberDTO);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("v_member/memberInform.jsp");
+		mv.setViewName("v_mypage/mypage_mainMemberInfo.jsp");
 		
 		return mv;
 	}
