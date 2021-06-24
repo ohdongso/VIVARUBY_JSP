@@ -153,12 +153,12 @@
                       aria-expanded="false">문의사항</a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="">자유게시판</a>
+                        <a class="nav-link" href="${path}/v_board/board.jsp">자유게시판</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">리뷰게시판</a>
+                        <a class="nav-link" href="${path}/v_review/review.jsp">리뷰게시판</a>
                       </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">교환,환불 게시판</a>
+                        <a class="nav-link" href="${path}/v_refund/refund.jsp">교환,환불 게시판</a>
                       </li>
                     </ul>
                   </li>
@@ -171,9 +171,9 @@
                         <a class="nav-link" href="${path}/front?key=faq&methodName=selectAll">FAQ</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="elements.html">공지사항</a>
+                        <a class="nav-link" href="">공지사항</a>
                       </li>     <li class="nav-item">
-                        <a class="nav-link" href="elements.html">1:1문의</a>
+                        <a class="nav-link" href="">1:1문의</a>
                       </li>
                     </ul>
                   </li>                
