@@ -46,7 +46,7 @@
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
-                    //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+                    // [2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
                     if ( everythings_fine ) {
                         msg = '결제가 완료되었습니다.';
                         msg += '\n고유ID : ' + rsp.imp_uid;
@@ -60,8 +60,8 @@
                     	alert(msg);
                     }
                 });
-                //성공시 이동할 페이지
-//                 alert(totalPrice + "원 결제가 완료되었습니다.");
+                //성공시 이동할 페이지, Main.jsp말고 order.jsp페이지로 이동해야된다.
+            	//alert(totalPrice + "원 결제가 완료되었습니다.");
                 alert("결제가 완료되었습니다. 이용해주셔서 감사합니다.");
                 location.href="${path}/Main.jsp";
             } else {

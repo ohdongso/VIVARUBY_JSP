@@ -83,13 +83,14 @@ function numberWithCommas(x) {
 				return false;
 			}
 			
-			// location.href="${path}/front?key=product&methodName=selectAll";
 			// 여기서 결제 방법에 따라서 다시 한번 나눠줘야 한다.
 			if(flag == 1) {
+				alert($("#dt").val());
 				alert("선택하신 통장으로 입금해주세요. 이용해주셔서 감사합니다.");
-				location.href="${path}/front?key=order&methodName=cashOne&couponCode="+$("#couponSelect").val()
-						+"&productCode="+$("#productCode").val();     
-			} else if(flag == 2) {// name, email, phone, address, totalPrice
+				location.href="${path}/front?key=order&methodName=cashOne&couponCode=" + $("#couponSelect").val()
+						+ "&productCode=" + $("#productCode").val() + "&name=" + $("#name").val() + "&phone=" + $("#phone").val()
+						+ "&address=" + $("#address").val() + "&orderPayment=1&orderAmount=" + $("#dt").val();
+			} else if(flag == 2) { // name, email, phone, address, totalPrice
 				var name = $("#name").val();
 // 				alert(name);
 				
@@ -108,7 +109,7 @@ function numberWithCommas(x) {
 				// &name="+name+"&email="+email+"&phone="+phone+"&address="+address+"&totalPrice="+totalPrice;
 				location.href="${path}/v_payment/kakao.jsp?name="+name+"&email="+email+"&phone="+phone+"&address="+address+"&totalPrice="+totalPrice;
 			}
-
+	
 		}); // 결제하기 끝.
 	
 		$("#couponSelect").change(function() {
@@ -126,9 +127,10 @@ function numberWithCommas(x) {
 							var discountPrice = numberWithCommas(item) + "원";
 							$("#discountPrice").text(discountPrice);
 						} else if(index == 1) {
+							$("#dt").val(item);
 							var totalPrice = numberWithCommas(item) + "원";
 		 					$("#resultPrice").text(totalPrice);
-		 					$("#finalPrice").text(totalPrice);
+		 					$("#finalPrice").text(totalPrice);	 					
 						}		
 					});
 	
@@ -195,6 +197,7 @@ function sample4_execDaumPostcode() {
 
 </head>
 <body>
+		
 	<!--================ Header 시작. =================-->
   	<jsp:include page="../header.jsp"/>
     <!--================ 헤더 끝. =================-->
@@ -296,7 +299,8 @@ function sample4_execDaumPostcode() {
                   <!-- 총가격 -->
                   <td>
                   	<h5><fmt:formatNumber value="${productDTO.totalPrice}" />원</h5>
-                  </td>     
+                  </td>
+                       
                 </tr>
                 </tbody>                
               </c:forEach>                   
@@ -342,8 +346,8 @@ function sample4_execDaumPostcode() {
                                <input type="hidden" id="address" name="address" value="${memberDTO.addr}">
                                <input type="hidden" id="email" name="email" value="${memberDTO.email}">       
                                <input type="hidden" id="totalPrice" name="totalPrice" value="${applicationScope.totalPrice}">
-                               
-                               </td>
+                               <input type="hidden" id="dt" value="">
+                               </td> 
                            </tr>
                            
                            <!-- 이메일 -->

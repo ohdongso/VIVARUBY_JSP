@@ -178,7 +178,7 @@
                       <a href="${path}/front?key=cart&methodName=selectAllCart">장바구니목록</a>
                     </li>
                     <li>
-                      <a href="#">주문목록/배송조회</a>
+                      <a href="${path}/v_mypage/mypage_memberOrder.jsp">주문목록/배송조회</a>
                     </li>               
                   </ul>
                 </div>

@@ -446,4 +446,26 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 	
+	/**
+	 * 상품재고 감소
+	 * */
+	@Override
+	public void downStock(int productCode) throws SQLException {
+		Connection con =null;
+		PreparedStatement ps = null;
+		String sql = "UPDATE PRODUCT SET PRODUCT_STOCK = (PRODUCT_STOCK - 1) WHERE PRODUCT_CODE = ?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, productCode);
+			
+			ps.executeUpdate();
+			
+		}finally {
+			DbUtil.dbClose(ps, con);
+		}
+	}
+	
+	
 }

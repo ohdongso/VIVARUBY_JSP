@@ -6,7 +6,7 @@ import java.util.List;
 import kosta.mvc.dto.ProductDTO;
 
 public interface ProductDAO {
-	
+
 	/**
 	 * 상품삭제
 	 * */
@@ -76,4 +76,9 @@ public interface ProductDAO {
 	 * 상품구매수량 증가.
 	 * */
 	void upQty(int productCode) throws SQLException;
+	
+	/**
+	 * 상품재고 감소
+	 * */
+	void downStock(int productCode) throws SQLException;
 }
