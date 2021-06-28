@@ -127,15 +127,22 @@ public class OrderController implements Controller{
 		
 		// 결제수단 ==> (1번 무통장),(2번 카카오페이)
 		int orderPayment = Integer.parseInt(request.getParameter("orderPayment"));
+		
+		// 결제 총액
 		int orderAmount = Integer.parseInt(request.getParameter("orderAmount"));
 			
 		OrderDTO orderDTO = new OrderDTO(0, productCode, id, orderName, orderPhone,
-		orderAddr, null, null, orderPayment, orderAmount, null, null);
+		orderAddr, null, null, orderPayment, orderAmount, null, null, null);
 		
-//		orderService
-		 
+		// 주문테이블에 정보 등록.
+//		orderService.insertOrder(orderDTO);
+		
+		// 주문테이블에 등록된 데이터 가져오기.
+		List<OrderDTO> orderList = orderService.selectAllOrderList();
+		
 		ModelAndView mv = new ModelAndView();
-//		request.setAttribute("orderDTO", orderDTO);
+		
+		request.setAttribute("orderList", orderList);
 		
 		mv.setViewName("v_order/orderList.jsp");
 		return mv;

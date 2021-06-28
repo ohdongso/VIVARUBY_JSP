@@ -1,6 +1,7 @@
 package kosta.mvc.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import kosta.mvc.dao.OrderDAO;
 import kosta.mvc.dao.OrderDAOImpl;
@@ -15,8 +16,18 @@ public class OrderServiceImpl implements OrderService {
 	 * */
 	@Override
 	public void insertOrder(OrderDTO orderDTO) throws SQLException {
-		
-		
+		int result = orderDAO.insertOrder(orderDTO);
+		if(result == 0) {
+			throw new SQLException("주문이 되지 않았습니다.");
+		}
+	}
+	
+	/**
+	 * 주문테이블에 있는 주문목록 가져오기
+	 * */
+	@Override
+	public List<OrderDTO> selectAllOrderList() throws SQLException {
+		return orderDAO.selectAllOrderList();
 	}
 	
 	/**
@@ -34,9 +45,5 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 
-	
-	
-	
-	
 	
 }

@@ -12,12 +12,16 @@ public class OrderDTO {
 	private int orderPayment;
 	private int orderAmount;
 	private String orderContent;
+	private String orderDepositor;
 	private String orderDate;
+	
+
+	
 	
 	public OrderDTO() {}
 	public OrderDTO(int orderCode, int productCode, String id, String orderName, String orderPhone, String orderAddr1,
 			String orderAddr2, String orderAddr3, int orderPayment, int orderAmount, String orderContent,
-			String orderDate) {
+			String orderDepositor, String orderDate) {
 		super();
 		this.orderCode = orderCode;
 		this.productCode = productCode;
@@ -30,9 +34,16 @@ public class OrderDTO {
 		this.orderPayment = orderPayment;
 		this.orderAmount = orderAmount;
 		this.orderContent = orderContent;
+		this.orderDepositor = orderDepositor;
 		this.orderDate = orderDate;
 	}
 	
+	public String getOrderDepositor() {
+		return orderDepositor;
+	}
+	public void setOrderDepositor(String orderDepositor) {
+		this.orderDepositor = orderDepositor;
+	}
 	public int getOrderCode() {
 		return orderCode;
 	}
