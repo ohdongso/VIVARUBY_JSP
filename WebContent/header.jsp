@@ -171,7 +171,7 @@
                         <a class="nav-link" href="${path}/front?key=faq&methodName=selectAll">FAQ</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="">공지사항</a>
+                        <a class="nav-link" href="${path}/front?key=notice&methodName=selectAll">공지사항</a>
                       </li>     <li class="nav-item">
                         <a class="nav-link" href="">1:1문의</a>
                       </li>
