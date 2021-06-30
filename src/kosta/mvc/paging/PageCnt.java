@@ -1,8 +1,12 @@
 package kosta.mvc.paging;
 
 public class PageCnt {
-	private static int pageCnt;  
+	// 총 페이지 수
+	private static int pageCnt;
+	
+	// 한페이지 당 게시물 수
 	public static  int pagesize = 5;
+	
 	public static int pageNo=1;
 	public  int blockcount=2;
 	

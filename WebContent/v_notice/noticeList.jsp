@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="${path}/css/responsive.css" />
     <style type="text/css">
     
+    #head {
+   		color: white;
+	}
+	
+	#write {
+		margin-left: 90%;
+	}
+	
     </style>
 
 
@@ -55,60 +63,162 @@
 	      	<!-- 장바구니 리스트 -->
         <h2><strong>공지사항</strong></h2>
         <hr style="border: solid 1px black;">
+		
+<table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
+	<colgroup>
+		<col width="16%"/>
+		<col width="30%"/>
+		<col width="16%"/>
+		<col width="16%"/>
+		<col width="10%"/>
+		<col width="10%"/>
+	</colgroup>
 	
-		<table border="1">
-							<tr>
-								<th>글번호</th>
-								<th>글제목</th>
-								<th>첨부파일</th>
-								<th>작성자</th>						
-								<th>조회수</th>		
-								<th>등록날짜</th>
-								<c:if test="${sessionScope.loginState==0}">
-									<th>삭제</th>
-								</c:if>
-							</tr>
-							<c:forEach items="${requestScope.noticeList}" var="noticeDTO">
-								<tr>
-											<td>${noticeDTO.noticeCode}</td>
-											<td>${noticeDTO.id}</td>
-											<td>${noticeDTO.file}</td>
-											<td><a
-												href="${path}/front?key=notice&methodName=selectByNoticeCode&noticeCode=${noticeDTO.noticeCode}">${noticeDTO.noticeTitle}</a>
-											</td>
-											<td>${noticeDTO.views}</td>
-											<td><a href="${path}/downLoad?fileName=${noticeDTO.file}">${noticeDTO.file}</a></td>
-											<td>${noticeDTO.rdate}</td>
-											<c:if test="${sessionScope.loginState==0}">
-												<td><a
-													href="${path}/front?key=notice&methodName=deleteAdmin&noticeDTOCode=${noticeDTO.noticeCode}">삭제</a></td>
-											</c:if>
-								</tr>
-							</c:forEach>
+	<tr>
+        <td bgcolor="pink">
+            <p align="center">
+            <font color="white" ><b><span style="font-size:9pt;" id="head">글번호</span></b></font></p>
+        </td>
+        <td bgcolor="pink">
+            <p align="center" ><font color="white"><b><span style="font-size:9pt;" id="head">글제목</span></b></font></p>
+        </td>
+        <td bgcolor="pink">
+            <p align="center"><font color="white"><b><span style="font-size:9pt;" id="head">첨부파일</span></b></font></p>
+        </td>
+        <td bgcolor="pink">
+            <p align="center"><font color="white"><b><span style="font-size:9pt;" id="head">작성자</span></b></font></p>
+        </td>
+        <td bgcolor="pink">
+            <p align="center"><font color="white"><b><span style="font-size:9pt;"" id="head">조회수</span></b></font></p>
+        </td>
+        <td bgcolor="pink">
+            <p align="center"><font color="white"><b><span style="font-size:9pt;" id="head">등록날짜</span></b></font></p>
+        </td>
+    </tr>
+    
+    <c:choose>
+    <c:when test="${empty requestScope.noticeList}">
+	   <tr>
+       		<td colspan="5">
+            	<p align="center"><b><span style="font-size:9pt;">등록된 게시물이 없습니다.</span></b></p>
+        	</td>
+    	</tr>
+    </c:when>
+    <c:otherwise>
 
-							<c:choose>
+	<c:forEach items="${requestScope.noticeList}" var="noticeDTO">
+		    <tr onmouseover="this.style.background='#eaeaea'"
+		        onmouseout="this.style.background='white'">
+		        
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${noticeDTO.noticeCode}</span></p>
+		        </td>
+		        
+		        <td bgcolor="">
+					<p align="center"><span style="font-size:9pt;">
+					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${noticeDTO.noticeCode}">
+					  ${noticeDTO.noticeTitle}
+					</a>
+					</span></p>
+		        </td>
+		        
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		    		<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${noticeDTO.noticeCode}">
+					  ${noticeDTO.file}
+					</a>
+					</span></p>
+		        </td>
+		         
+		         <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${noticeDTO.id}</span></p>
+		        </td>
+		        
+		         <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            <fmt:formatNumber value="${noticeDTO.views}"/></span></p>
+		        </td>
+		        
+		        <td bgcolor="">
+		            <p align="center"><span style="font-size:9pt;">
+		            ${noticeDTO.noticeRdate}</span></p>
+		        </td>
+		    </tr>
+    </c:forEach>
+	</c:otherwise>
+	
+    </c:choose>
+</table>
+		
+		<!-- 페이징 처리부분 -->
+		<form action="" method="post">
+			<input type="submit" class="main_btn" id="write" value="공지작성">
+		</form>
+		
+					<div class="col-lg-12">
+						<div class="pageination">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-center">
+									
+									<!-- 페이징처리 객체를 .jsp에서 생성했다. -->
+									<jsp:useBean class="kosta.mvc.paging.PageCnt" id="p" />
+									
+									<!-- 
+									<c:set>은 setter메소드를 호출하는게 아니고, .jsp에서 변수를 선언하고 값을 대입하는것이다.
+									<c:set var="num" value="1"/>
+									${num} ==> 이렇게 사용가능.
+									-->
+									<c:set var="doneLoop" value="false" />
+									
+									<!-- 
+									현재 pageNo이 1로 설정 돼 있다.
+									1-1은 0, 0 % 2 == 0
+									 -->
+									<c:set var="temp" value="${(pageNo-1) % p.blockcount}"/>
+									
 
-								<c:when test="${empty requestScope.noticeList}">
-									<tr>
-										<td colspan="7">
-											<p align="center">
-												등록된 게시물이 없습니다.
-											</p>
-										</td>
-									</tr>
-								</c:when>
+									
+									<!-- (1-1)%2, (2-1)%2, (3-1)%2 
+									
+									-->
+									<c:set var="startPage" value="${pageNo - temp}" />
+									<!--   1- 1 -->
+								
+									<c:if test="${(startPage-p.blockcount) > 0}">
+										<!-- (-2) > 0  -->
+										<li class="page-item"><a class="page-link"
+											href="${path}/front?key=board&methodName=selectAll&pageNo=${startPage-1}"
+											aria-label="Previous"> <i class="ti-angle-double-left"></i>
+										</a></li>
+									</c:if>
 
-							</c:choose>
-						</table>
-						
-						<div style="text-align: right">
-							<a href="${path}/v_notice/noticeWrite.jsp">공지사항작성</a>
+									<c:forEach var='i' begin='${startPage}'
+										end='${(startPage-1)+p.blockcount}'>
+										<c:if test="${(i-1)>=p.pageCnt}">
+											<c:set var="doneLoop" value="true" />
+										</c:if>
+										<c:if test="${not doneLoop}">
+											<li class="page-item"><a class="page-link"
+												href="${path}/front?key=board&methodName=selectAll&pageNo=${i}">${i}</a></li>
+										</c:if>
+									</c:forEach>
+
+									<c:if test="${(startPage+p.blockcount)<=p.pageCnt}">
+										<li class="page-item"><a class="page-link"
+											href="${path}/front?key=board&methodName=selectAll&pageNo=${startPage+p.blockcount}"
+											aria-label="Next"> <i class="ti-angle-double-right"></i>
+										</a></li>
+									</c:if>
+
+								</ul>
+							</nav>
 						</div>
-						
-						
-						
-						
-							
+					</div>
+		
+		
+		
 	   </div>
     </section>
 	

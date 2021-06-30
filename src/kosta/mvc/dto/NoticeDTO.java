@@ -9,6 +9,9 @@ public class NoticeDTO {
 	private String file;
 	private String noticeRdate;
 	
+	// 페이지처리
+	private int pageCnt;
+	
 	public NoticeDTO() {
 		super();
 	}
