@@ -34,7 +34,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 			Controller controller = map.get(key);
 			
-			ModelAndView mv = (ModelAndView)method.invoke(controller, request, response);//Ư�� controller�� �޼ҵ尡 ȣ��ȴ�.
+			ModelAndView mv = (ModelAndView)method.invoke(controller, request, response);
 			
 			if(mv.isRedirect()) {
 				response.sendRedirect(mv.getViewName());

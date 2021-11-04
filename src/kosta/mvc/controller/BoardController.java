@@ -15,4 +15,13 @@ public class BoardController implements Controller {
 		return null;
 	}
 	
+	/**
+	 * 전체검색
+	 * */
+	public ModelAndView selectAll(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("확인");
+		return null;
+	}
+	
 }

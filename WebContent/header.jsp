@@ -153,7 +153,7 @@
                       aria-expanded="false">문의사항</a>
                     <ul class="dropdown-menu">
                       <li class="nav-item">
-                        <a class="nav-link" href="${path}/v_board/board.jsp">자유게시판</a>
+                        <a class="nav-link" href="${path}/front?key=board&methodName=selectAll">자유게시판</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="${path}/v_review/review.jsp">리뷰게시판</a>
