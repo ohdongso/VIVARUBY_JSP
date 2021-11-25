@@ -85,8 +85,4 @@ public class NoticeDAOImpl implements NoticeDAO{
 			}
 			return result;
 	    }
-	 
-	 
-	 
-	 
 }
